@@ -1,0 +1,65 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AppRoutingModule } from './app.routing';
+import { MaterialModule } from './modules/material/material.module';
+import { SharedModule } from './modules/shared/shared.module';
+
+import { AccountService } from './services/account.service';
+import { StorageService } from './services/storage.service';
+
+import { AuthGuard } from './services/guards/auth.guard.service';
+import { NoAuthGuard } from './services/guards/noauth.guard.service';
+
+import { AuthInterceptor } from './services/interceptors/auth.interceptor.service';
+import { ResponseInterceptor } from './services/interceptors/response.interceptor.service';
+
+import { AppComponent } from './app.component';
+import { MainComponent } from './components/main/main.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignOutComponent } from './components/sign-out/sign-out.component';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    MainComponent,
+    HeaderComponent,
+    FooterComponent,
+    PageNotFoundComponent,
+    SignInComponent,
+    SignUpComponent,
+    SignOutComponent,
+    WrapperComponent
+  ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    SharedModule
+  ],
+  providers: [
+    AccountService,
+    StorageService,
+    AuthGuard,
+    NoAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

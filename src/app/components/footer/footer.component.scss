@@ -1,0 +1,24 @@
+@import '~sass/variables';
+
+footer {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 13px;
+  text-align: center;
+  background-color: $primary-color;
+}
+
+footer p {
+  margin: 5px;
+  color: $white-subdued;
+}
+
+footer {
+  a:link,
+  a:visited,
+  a:hover {
+    color: $white-subdued;
+    text-decoration: underline;
+  }
+}

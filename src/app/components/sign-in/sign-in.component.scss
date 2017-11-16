@@ -1,0 +1,48 @@
+@import '~sass/variables';
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding: 150px 0 70px 0;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.form-container {
+  margin: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container > *:not(button):not(.error-indicator) {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+}
+
+button {
+  width: 100%;
+  max-width: 300px;
+  margin: 30px 10px
+}
+
+.after-button {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 450px) {
+  .logo {
+    padding: 40px 0 40px 0;
+  }
+}

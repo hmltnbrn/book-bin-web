@@ -1,0 +1,63 @@
+@import '~sass/variables';
+
+.header-link {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding: 70px 0 70px 0;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.error-indicator {
+  margin: 0 auto;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.mat-form-field {
+  margin: 15px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0 0 0;
+}
+
+@media (min-width: 700px) {
+  .form-container-vert {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .form-container {
+    display: none;
+  }
+
+  .form-container-vert {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .logo {
+    padding: 40px 0 40px 0;
+  }
+}
