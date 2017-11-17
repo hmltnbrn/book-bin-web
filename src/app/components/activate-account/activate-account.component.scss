@@ -1,0 +1,23 @@
+@import '~sass/variables';
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding: 70px 0 70px 0;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.content {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info {
+  padding: 0 20px;
+}

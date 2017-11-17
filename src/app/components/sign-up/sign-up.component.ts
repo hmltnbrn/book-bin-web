@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
   hide: boolean = true;
 
   apiError: string;
+  signedUp: boolean = false;
   isLoading: boolean = false;
 
   constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) {
@@ -65,22 +66,12 @@ export class SignUpComponent implements OnInit {
     this.isLoading = true;
     this.accountService.Register(this.signUpForm.value).subscribe(
     data => {
+      this.isLoading = false;
       console.log(data);
       if (data["status"] == true) {
-        this.accountService.SignIn({ username: this.signUpForm.value.username, password: this.signUpForm.value.password }).subscribe(
-          data => {
-            this.storageService.setItem('id', data['id']);
-            this.storageService.setItem('username', this.signUpForm.value.username);
-            this.storageService.setItem('token', data['token']);
-            this.storageService.setItem('staySignedIn', false);
-            this.router.navigate(['/library/dashboard']);
-          },
-          error => {
-            console.log(error);
-          });
+        this.signedUp = true;
       }
       else {
-        this.isLoading = false;
         this.apiError = data["message"];
       }
     },

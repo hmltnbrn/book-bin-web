@@ -38,6 +38,15 @@ a {
   padding: 10px 0 0 0;
 }
 
+.content {
+  margin: 100px auto;
+  text-align: center;
+}
+
+.info {
+  padding: 0 20px;
+}
+
 @media (min-width: 700px) {
   .form-container-vert {
     display: none;

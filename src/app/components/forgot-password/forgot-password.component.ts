@@ -1,0 +1,64 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { AccountService } from '../../services/account.service';
+import { StorageService } from '../../services/storage.service';
+
+@Component({
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss'],
+  providers: [AccountService, StorageService]
+})
+export class ForgotPasswordComponent implements OnInit {
+
+  isLoading: boolean = false;
+  emailSent: boolean = false;
+
+  emailForm: FormGroup;
+
+  apiError: string;
+
+  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) {
+    this.emailForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email])
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  getErrorMessage(control: FormControl, field?: string) {
+    if (control.hasError('required')) {
+      return 'Please enter a value';
+    }
+    else if (control.hasError('email')) {
+      return 'Please enter a valid email';
+    }
+    else {
+      return '';
+    }
+  }
+
+  onSubmit() {
+    this.isLoading = true;
+    this.apiError = "";
+    console.log(this.emailForm.value);
+    this.accountService.ForgotPassword(this.emailForm.value).subscribe(
+      data => {
+        this.isLoading = false;
+        console.log(data);
+        if (data['status'] == false) {
+          this.apiError = data['message'];
+        }
+        else {
+          this.emailSent = true;
+          console.log('Good');
+        }
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+}

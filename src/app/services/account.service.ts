@@ -15,4 +15,18 @@ export class AccountService {
     return this.http.post(environment.api + '/auth/signin', user);
   }
 
+  ActivateAccount(token) {
+    return this.http.post(environment.api + '/auth/activate', 'token=' + token, {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    });
+  }
+
+  ForgotPassword(email) {
+    return this.http.post(environment.api + '/auth/forgotpassword', email);
+  }
+
+  ResetPassword(data) {
+    return this.http.post(environment.api + '/auth/resetpassword', data);
+  }
+
 }
