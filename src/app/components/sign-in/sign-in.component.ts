@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { AccountService } from '../../services/account.service';
 import { StorageService } from '../../services/storage.service';
@@ -18,7 +18,7 @@ export class SignInComponent implements OnInit {
 
   apiError: string;
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) {
+  constructor(private route: ActivatedRoute, private router: Router, private accountService: AccountService, private storageService: StorageService) {
     this.signInForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -27,7 +27,14 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.route.queryParams.subscribe(params => {
+      if (params.redirectFor && params.redirectFor == 'expired') {
+        this.apiError = "Your session expired";
+      }
+      if (params.redirectFor && params.redirectFor == 'denied') {
+        this.apiError = "Access denied";
+      }
+    });
   }
 
   getErrorMessage(control: FormControl) {

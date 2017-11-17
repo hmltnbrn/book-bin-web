@@ -1,11 +1,17 @@
 <header>
   <mat-toolbar color="primary">
     <a mat-button routerLink="/">Home</a>
+    <a mat-button [routerLink]="['/library/dashboard']" *ngIf="username">My Library</a>
     <span class="spacer"></span>
-    <a mat-button [routerLink]="['/library/dashboard']" *ngIf="username">Dashboard</a>
     <a mat-button routerLink="/signin" *ngIf="!username">Sign In</a>
     <a mat-button routerLink="/signup" *ngIf="!username">Sign Up</a>
-    <a mat-button routerLink="/signout" *ngIf="username">Sign Out</a>
+    <mat-menu #appMenu="matMenu">
+      <a mat-menu-item routerLink="/profile">Profile</a>
+      <a mat-menu-item routerLink="/help">Help</a>
+      <a mat-menu-item routerLink="/signout">Sign Out</a>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="username">
+      <mat-icon>person</mat-icon>
+    </button>
   </mat-toolbar>
 </header>
-

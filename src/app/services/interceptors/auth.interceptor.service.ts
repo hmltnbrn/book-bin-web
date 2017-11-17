@@ -25,13 +25,13 @@ export class AuthInterceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 400) {
           console.log(err)
-          this.router.navigate(['/signin']);
+          this.router.navigate(['/signout'], { queryParams: { redirectFor: 'denied' } });
         }
         if (err.status === 401) {
           console.log(err)
-          this.router.navigate(['/signin']);
+          this.router.navigate(['/signout'], { queryParams: { redirectFor: 'expired' } });
         }
-        if (err.status == 500) {
+        if (err.status === 500) {
           console.log(err)
           this.router.navigate(['/']);
         }

@@ -8,7 +8,7 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   Register(user) {
-    return this.http.post(environment.api + '/auth/register', user);
+    return this.http.post(environment.api + '/auth/signup', user);
   }
 
   SignIn(user) {

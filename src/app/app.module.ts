@@ -16,7 +16,6 @@ import { AuthGuard } from './services/guards/auth.guard.service';
 import { NoAuthGuard } from './services/guards/noauth.guard.service';
 
 import { AuthInterceptor } from './services/interceptors/auth.interceptor.service';
-import { ResponseInterceptor } from './services/interceptors/response.interceptor.service';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';

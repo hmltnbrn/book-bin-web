@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { StorageService } from '../../services/storage.service';
 
 @Component({
@@ -10,12 +10,22 @@ import { StorageService } from '../../services/storage.service';
 })
 export class SignOutComponent {
 
-  constructor(private router: Router, private storageService: StorageService) {
+  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService) {
     this.storageService.removeItem('id');
     this.storageService.removeItem('username');
     this.storageService.removeItem('token');
     this.storageService.removeItem('staySignedIn');
-    this.router.navigate(['/']);
+    this.route.queryParams.subscribe(params => {
+      if (params.redirectFor && params.redirectFor == 'denied') {
+        this.router.navigate(['/signin'], { queryParams: { redirectFor: 'denied' } });
+      }
+      else if (params.redirectFor && params.redirectFor == 'expired') {
+        this.router.navigate(['/signin'], { queryParams: { redirectFor: 'expired' } });
+      }
+      else {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
 }
