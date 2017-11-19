@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --target=prod -e ${NG_ENV:-prod} --aot",
-    "heroku-postbuild": "ng build --target=staging -e ${NG_ENV:-staging} --aot"
+    "heroku-postbuild": "ng build --target=production -e ${NG_ENV:-prod} --aot",
+    "heroku-postbuild": "ng build --target=production -e ${NG_ENV:-staging} --aot"
   },
   "private": true,
   "dependencies": {
