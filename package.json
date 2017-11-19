@@ -4,12 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --target=production -e ${NG_ENV:-prod} --aot",
     "heroku-postbuild": "ng build --target=production -e ${NG_ENV:-staging} --aot"
   },
   "private": true,
@@ -27,8 +26,11 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "compression": "^1.7.1",
     "core-js": "^2.4.1",
+    "express": "^4.16.2",
     "hammerjs": "^2.0.8",
+    "path": "^0.12.7",
     "rxjs": "^5.5.2",
     "typescript": "~2.4.2",
     "zone.js": "^0.8.14"
