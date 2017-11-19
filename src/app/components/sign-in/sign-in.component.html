@@ -1,12 +1,12 @@
 <div class="logo">
   <a routerLink="../">Classroom Library</a>
 </div>
+<div class="error-indicator" *ngIf="apiError">
+  {{apiError}}
+</div>
 <form id="sign-in-form" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="signInForm" novalidate>
-  <div class="error-indicator" *ngIf="apiError">
-    {{apiError}}
-  </div>
   <mat-form-field>
-    <input matInput placeholder="Username" formControlName="username" required>
+    <input matInput [autofocus] placeholder="Username" formControlName="username" required>
     <mat-error *ngIf="signInForm.controls.username.invalid">{{getErrorMessage(signInForm.controls.username)}}</mat-error>
   </mat-form-field>
   <mat-form-field>

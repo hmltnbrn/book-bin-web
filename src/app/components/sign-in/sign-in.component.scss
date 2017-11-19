@@ -13,6 +13,10 @@ a {
   text-decoration: none;
 }
 
+.error-indicator {
+  margin: 0 auto;
+}
+
 .form-container {
   margin: 20px 0 20px 0;
   display: flex;
@@ -20,21 +24,18 @@ a {
   align-items: center;
 }
 
-.form-container > *:not(button):not(.error-indicator) {
-  width: 100%;
-  max-width: 300px;
+.form-container > *:not(button) {
+  width: 300px;
   margin: 10px;
 }
 
 button {
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   margin: 30px 10px
 }
 
 .after-button {
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   display: flex;
   justify-content: space-around;
   margin: 0 auto;

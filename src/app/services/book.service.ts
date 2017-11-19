@@ -8,11 +8,11 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   GetAllBooks() {
-    return this.http.get(environment.api + '/api/Books');
+    return this.http.get(environment.api + '/api/books');
   }
 
   GetBook(id: number) {
-    return this.http.get(environment.api + '/api/Books/' + id);
+    return this.http.get(environment.api + '/api/books/' + id);
   }
 
 }

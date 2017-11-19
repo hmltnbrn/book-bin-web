@@ -1,7 +1,10 @@
 <header>
   <mat-toolbar color="primary">
-    <a mat-button routerLink="/">Home</a>
-    <a mat-button [routerLink]="['/library/dashboard']" *ngIf="username">My Library</a>
+    <button mat-icon-button (click)="toggleSideNav()" *ngIf="username">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a mat-button routerLink="/" (click)="closeSideNav()">Home</a>
+    <a mat-button [routerLink]="['/library/dashboard']" (click)="closeSideNav()" *ngIf="username">My Library</a>
     <span class="spacer"></span>
     <a mat-button routerLink="/signin" *ngIf="!username">Sign In</a>
     <a mat-button routerLink="/signup" *ngIf="!username">Sign Up</a>

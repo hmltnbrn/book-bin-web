@@ -59,6 +59,9 @@
     "component": {
       "viewEncapsulation": "Emulated",
       "spec": false
+    },
+    "service": {
+      "spec": false
     }
   }
 }

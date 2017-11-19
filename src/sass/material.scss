@@ -1,0 +1,22 @@
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: $background-color;
+}
+
+.mat-horizontal-stepper-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 300px;
+}
+
+.mat-vertical-content {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+@media (max-width: 380px) {
+  .mat-vertical-content {
+    width: 225px;
+  }
+}

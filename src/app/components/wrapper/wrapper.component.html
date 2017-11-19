@@ -1,8 +1,20 @@
-<div class="wrapper">
-  <app-header [username]="username"></app-header>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-  <app-footer></app-footer>
-</div>
-
+<app-header [username]="username" (toggleSide)="sidenav.toggle()" (closeSide)="sidenav.close()"></app-header>
+<mat-sidenav-container class="sidenav-container" fullscreen>
+  <mat-sidenav #sidenav class="sidenav-window">
+    <h1>Navigate</h1>
+    <mat-nav-list>
+      <h3 mat-subheader>Books</h3>
+      <mat-list-item [routerLink]="['/']" (click)="sidenav.close()">Foo</mat-list-item>
+      <mat-list-item [routerLink]="['/library/dashboard']" (click)="sidenav.close()">Bar</mat-list-item>
+      <h3 mat-subheader>Students</h3>
+      <mat-list-item [routerLink]="['/']" (click)="sidenav.close()">Foo</mat-list-item>
+      <mat-list-item [routerLink]="['/library/dashboard']" (click)="sidenav.close()">Bar</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div class="wrapper">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</mat-sidenav-container>

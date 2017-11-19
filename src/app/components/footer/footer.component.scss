@@ -2,11 +2,12 @@
 
 footer {
   width: 100%;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-size: 13px;
   text-align: center;
   background-color: $primary-color;
+  flex: none;
 }
 
 footer p {

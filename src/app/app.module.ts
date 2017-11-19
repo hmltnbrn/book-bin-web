@@ -29,6 +29,7 @@ import { WrapperComponent } from './components/wrapper/wrapper.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ActivateAccountComponent } from './components/activate-account/activate
     WrapperComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    AutofocusDirective
   ],
   imports: [
     AppRoutingModule,
