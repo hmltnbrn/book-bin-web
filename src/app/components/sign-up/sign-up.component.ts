@@ -21,16 +21,19 @@ export class SignUpComponent implements OnInit {
   signedUp: boolean = false;
   isLoading: boolean = false;
 
+  titles: Array<string> = ['Mr.', 'Mrs.', 'Miss', 'Ms.', 'Dr.'];
+
   constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) {
     this.signUpForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}/)]),
       confirmPassword: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}/)]),
+      title: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),
       schoolName: new FormControl('', Validators.required),
+      zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),
       role: new FormControl(1)
     }, PasswordValidation.MatchPassword);
   }
