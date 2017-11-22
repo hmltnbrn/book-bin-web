@@ -30,6 +30,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { ForgotUsernameComponent } from './components/forgot-username/forgot-username.component';
+import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AutofocusDirective } from './directives/autofocus.directive';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     ActivateAccountComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    ForgotUsernameComponent,
+    InternalErrorComponent
   ],
   imports: [
     AppRoutingModule,

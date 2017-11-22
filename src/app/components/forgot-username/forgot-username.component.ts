@@ -5,12 +5,12 @@ import { AccountService } from '../../services/account.service';
 import { StorageService } from '../../services/storage.service';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss'],
+  selector: 'app-forgot-username',
+  templateUrl: './forgot-username.component.html',
+  styleUrls: ['./forgot-username.component.scss'],
   providers: [AccountService, StorageService]
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotUsernameComponent implements OnInit {
 
   isLoading: boolean = false;
   emailSent: boolean = false;
@@ -44,7 +44,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.isLoading = true;
     this.apiError = "";
     console.log(this.emailForm.value);
-    this.accountService.ForgotPassword(this.emailForm.value).subscribe(
+    this.accountService.ForgotUsername(this.emailForm.value).subscribe(
       data => {
         console.log(data);
         this.isLoading = false;

@@ -34,7 +34,7 @@ export class SignUpComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       schoolName: new FormControl('', Validators.required),
       zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),
-      role: new FormControl(1)
+      role: new FormControl(2)
     }, PasswordValidation.MatchPassword);
   }
 
@@ -69,17 +69,14 @@ export class SignUpComponent implements OnInit {
     this.isLoading = true;
     this.accountService.Register(this.signUpForm.value).subscribe(
     data => {
-      this.isLoading = false;
       console.log(data);
-      if (data["status"] == true) {
-        this.signedUp = true;
-      }
-      else {
-        this.apiError = data["message"];
-      }
+      this.isLoading = false;
+      this.signedUp = true;
     },
     error => {
       console.log(error);
+      this.isLoading = false;
+      this.apiError = error.error.message;
     });
   }
 

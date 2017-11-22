@@ -1,0 +1,27 @@
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<div class="header-link">
+  <a mat-button routerLink="/signin">I know my username</a>
+</div>
+<div class="logo">
+  <a routerLink="../">Classroom Library</a>
+</div>
+<ng-container *ngIf="!emailSent">
+  <p class="info">
+    Please enter your email and I'll send you your username.
+  </p>
+  <div class="error-indicator" *ngIf="apiError">
+    {{apiError}}
+  </div>
+  <form id="forgot-password-form" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="emailForm" novalidate>
+    <mat-form-field>
+      <input matInput [autofocus] placeholder="Email" formControlName="email" required>
+      <mat-error *ngIf="emailForm.controls.email.invalid">{{getErrorMessage(emailForm.controls.email)}}</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="emailForm.invalid">Engage</button>
+  </form>
+</ng-container>
+<ng-container *ngIf="emailSent">
+  <p class="info after">
+    Check your inbox and follow the link to sign in.
+  </p>
+</ng-container>

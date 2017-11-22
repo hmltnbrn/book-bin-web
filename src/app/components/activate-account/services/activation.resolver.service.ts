@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/map';
 import { AccountService } from '../../../services/account.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class AccountActivationResolver implements Resolve<any> {
@@ -11,12 +12,9 @@ export class AccountActivationResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     let token = route.paramMap.get('token');
 
-    return this.accountService.ActivateAccount(token).map(result => {
-      if (result["status"]) {
-        return result;
-      } else {
-        this.router.navigate(['/']);
-      }
-    }).first();
+    return this.accountService.ActivateAccount(token).catch(err => {
+      this.router.navigate(['/']);
+      return Observable.of(err.error);
+    });
   }
 }

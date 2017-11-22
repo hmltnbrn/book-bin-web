@@ -29,4 +29,8 @@ export class AccountService {
     return this.http.post(environment.api + '/auth/resetpassword', data);
   }
 
+  ForgotUsername(email) {
+    return this.http.post(environment.api + '/auth/forgotusername', email);
+  }
+
 }

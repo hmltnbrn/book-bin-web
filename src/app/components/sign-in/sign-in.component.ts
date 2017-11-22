@@ -28,11 +28,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      if (params.redirectFor && params.redirectFor == 'expired') {
-        this.apiError = "Your session expired";
-      }
-      if (params.redirectFor && params.redirectFor == 'denied') {
-        this.apiError = "Access denied";
+      if (params.redirectFor) {
+        this.apiError = params.redirectFor;
       }
     });
   }
@@ -47,21 +44,24 @@ export class SignInComponent implements OnInit {
     this.accountService.SignIn(this.signInForm.value).subscribe(
       data => {
         console.log(data);
-        if (data['status'] == false) {
-          this.apiError = data['message'];
-        }
-        else {
-          this.storageService.setItem('id', data['id']);
-          this.storageService.setItem('username', this.signInForm.value.username);
-          this.storageService.setItem('token', data['token']);
-          this.storageService.setItem('staySignedIn', this.signInForm.value.staySignedIn);
-          this.router.navigate(['/library/dashboard']);
-        }
-        
+        this.onSuccess(data);
       },
       error => {
         console.log(error);
+        this.onError(error);
       });
+  }
+
+  onSuccess(data) {
+    this.storageService.setItem('id', data['id']);
+    this.storageService.setItem('username', this.signInForm.value.username);
+    this.storageService.setItem('token', data['token']);
+    this.storageService.setItem('staySignedIn', this.signInForm.value.staySignedIn);
+    this.router.navigate(['/library/dashboard']);
+  }
+
+  onError(error) {
+    this.apiError = error.error.message;
   }
 
 }

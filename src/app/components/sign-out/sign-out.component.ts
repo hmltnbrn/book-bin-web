@@ -16,11 +16,8 @@ export class SignOutComponent {
     this.storageService.removeItem('token');
     this.storageService.removeItem('staySignedIn');
     this.route.queryParams.subscribe(params => {
-      if (params.redirectFor && params.redirectFor == 'denied') {
-        this.router.navigate(['/signin'], { queryParams: { redirectFor: 'denied' } });
-      }
-      else if (params.redirectFor && params.redirectFor == 'expired') {
-        this.router.navigate(['/signin'], { queryParams: { redirectFor: 'expired' } });
+      if (params.redirectFor) {
+        this.router.navigate(['/signin'], { queryParams: { redirectFor: params.redirectFor } });
       }
       else {
         this.router.navigate(['/']);

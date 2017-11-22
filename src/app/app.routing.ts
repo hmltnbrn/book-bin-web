@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
+import { ForgotUsernameComponent } from './components/forgot-username/forgot-username.component';
+import { InternalErrorComponent } from './components/internal-error/internal-error.component';
 
 const routes: Routes = [
   {
@@ -58,6 +60,11 @@ const routes: Routes = [
     canActivate: [NoAuthGuard]
   },
   {
+    path: 'forgot-username',
+    component: ForgotUsernameComponent,
+    canActivate: [NoAuthGuard]
+  },
+  {
     path: 'activate-account/:token',
     component: ActivateAccountComponent,
     canActivate: [NoAuthGuard],
@@ -65,7 +72,11 @@ const routes: Routes = [
       message: AccountActivationResolver
     }
   },
-  { 
+  {
+    path: '500',
+    component: InternalErrorComponent
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

@@ -21,3 +21,14 @@ a {
 .info {
   padding: 0 20px;
 }
+
+button {
+  width: 300px;
+  margin: 30px 0;
+}
+
+@media (max-width: 450px) {
+  button {
+    width: 250px;
+  }
+}

@@ -1,11 +1,20 @@
 @import '~sass/variables';
 
+.header-link {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .logo {
   display: flex;
   justify-content: center;
-  padding: 100px 0 70px 0;
+  padding: 70px 0 70px 0;
   font-weight: 600;
   font-size: 25px;
+}
+
+.error-indicator {
+  margin: 20px auto;
 }
 
 a {
@@ -13,8 +22,11 @@ a {
   text-decoration: none;
 }
 
-.error-indicator {
-  margin: 0 auto;
+.info {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 30px;
 }
 
 .form-container {
@@ -31,23 +43,16 @@ a {
 
 button {
   width: 300px;
-  margin: 30px 10px
+  margin: 20px 10px
 }
 
-.after-button {
-  width: 300px;
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
+@media (max-width: 550px) {
+  .info {
+    width: 300px;
+    margin: 20px auto;
+  }
 
-.after-button > * {
-  padding: 15px;
-}
-
-@media (max-width: 450px) {
-  .logo {
-    padding: 40px 0 40px 0;
+  .after {
+    text-align: center;
   }
 }
