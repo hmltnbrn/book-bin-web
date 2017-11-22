@@ -1,0 +1,17 @@
+@mixin logo($top-padding) {
+  display: flex;
+  justify-content: center;
+  padding: $top-padding 0 70px 0;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.header-link {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo > a, .header-link > a {
+  color: $primary-color;
+  text-decoration: none;
+}

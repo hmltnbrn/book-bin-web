@@ -1,16 +1,8 @@
 @import '~sass/variables';
+@import '~sass/reusable/logo-banner';
 
 .logo {
-  display: flex;
-  justify-content: center;
-  padding: 70px 0 70px 0;
-  font-weight: 600;
-  font-size: 25px;
-}
-
-a {
-  color: $primary-color;
-  text-decoration: none;
+  @include logo(106px);
 }
 
 .content {

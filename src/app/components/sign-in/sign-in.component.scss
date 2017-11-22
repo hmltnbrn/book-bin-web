@@ -1,11 +1,8 @@
 @import '~sass/variables';
+@import '~sass/reusable/logo-banner';
 
 .logo {
-  display: flex;
-  justify-content: center;
-  padding: 100px 0 70px 0;
-  font-weight: 600;
-  font-size: 25px;
+  @include logo(106px);
 }
 
 a {
@@ -27,7 +24,7 @@ a {
 .form-container > *:not(button) {
   width: 300px;
   margin: 10px;
-}
+} 
 
 button {
   width: 300px;

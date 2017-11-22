@@ -1,25 +1,12 @@
 @import '~sass/variables';
-
-.header-link {
-  display: flex;
-  justify-content: flex-end;
-}
+@import '~sass/reusable/logo-banner';
 
 .logo {
-  display: flex;
-  justify-content: center;
-  padding: 70px 0 70px 0;
-  font-weight: 600;
-  font-size: 25px;
+  @include logo(70px);
 }
 
 .error-indicator {
   margin: 0 auto;
-}
-
-a {
-  color: $primary-color;
-  text-decoration: none;
 }
 
 .form-container {
@@ -39,7 +26,7 @@ a {
 }
 
 .content {
-  margin: 100px auto;
+  margin: 50px auto;
   text-align: center;
 }
 
