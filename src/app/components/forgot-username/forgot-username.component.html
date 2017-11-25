@@ -14,7 +14,7 @@
   </div>
   <form id="forgot-password-form" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="emailForm" novalidate>
     <mat-form-field>
-      <input matInput [autofocus] placeholder="Email" formControlName="email" required>
+      <input matInput [autofocus]="true" placeholder="Email" formControlName="email" required>
       <mat-error *ngIf="emailForm.controls.email.invalid">{{getErrorMessage(emailForm.controls.email)}}</mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" [disabled]="emailForm.invalid">Engage</button>

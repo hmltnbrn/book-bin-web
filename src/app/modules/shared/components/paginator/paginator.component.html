@@ -1,0 +1,31 @@
+<mat-paginator 
+  [length]="totalItems"
+  [pageIndex]="pageIndex"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[6, 12, 24, 48, 96, totalItems]"
+  (page)="goToPage($event)"
+>
+</mat-paginator>
+<ul class="page-numbers">
+  <li class="page-index" *ngIf="pageIndex > 0">
+    <button mat-button class="page-link" (click)="parsePage(0)">1</button>
+  </li>
+  <li class="page-index" *ngIf="pageIndex - 1 > 1">
+    <button mat-button class="page-link" (click)="parsePreviousEllipsis()">...</button>
+  </li>
+  <li class="page-index" *ngIf="pageIndex > 1">
+    <button mat-button class="page-link" (click)="parsePage(pageIndex - 1)">{{pageIndex}}</button>
+  </li>
+  <li class="page-index">
+    <button mat-raised-button color="primary" class="page-link current">{{pageIndex + 1}}</button>
+  </li>
+  <li class="page-index" *ngIf="pageIndex + 2 < pageTotal">
+    <button mat-button class="page-link" (click)="parsePage(pageIndex + 1)">{{pageIndex + 2}}</button>
+  </li>
+  <li class="page-index" *ngIf="pageIndex + 3 < pageTotal">
+    <button mat-button class="page-link" (click)="parseNextEllipsis()">...</button>
+  </li>
+  <li class="page-index" *ngIf="pageIndex < pageTotal - 1">
+    <button mat-button class="page-link" (click)="parsePage(pageTotal - 1)">{{pageTotal}}</button>
+  </li>
+</ul>

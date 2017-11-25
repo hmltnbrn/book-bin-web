@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { AccountService } from '../../services/account.service';
-import { PasswordValidation } from '../../validators/password-validation';
+import { AccountService } from '@services/account.service';
+import { PasswordValidator } from '@validators/password.validator';
 
 @Component({
   selector: 'app-reset-password',
@@ -35,7 +35,7 @@ export class ResetPasswordComponent implements OnInit {
       confirmPassword: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}/)]),
       email: new FormControl(params.email || '', Validators.required),
       token: new FormControl(params.token || '', Validators.required)
-    }, PasswordValidation.MatchPassword);
+    }, PasswordValidator.MatchPassword);
   }
 
   getErrorMessage(control: FormControl, field?: string) {

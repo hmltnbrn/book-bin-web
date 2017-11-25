@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AccountService } from '../../services/account.service';
-import { StorageService } from '../../services/storage.service';
+import { AccountService } from '@services/account.service';
+import { StorageService } from '@services/storage.service';
 
 @Component({
   selector: 'app-forgot-username',
@@ -19,13 +19,12 @@ export class ForgotUsernameComponent implements OnInit {
 
   apiError: string;
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) {
+  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) { }
+
+  ngOnInit() {
     this.emailForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email])
     });
-  }
-
-  ngOnInit() {
   }
 
   getErrorMessage(control: FormControl, field?: string) {

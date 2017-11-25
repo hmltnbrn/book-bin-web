@@ -4,11 +4,10 @@
     <h1>Navigate</h1>
     <mat-nav-list>
       <h3 mat-subheader>Books</h3>
-      <mat-list-item [routerLink]="['/']" (click)="sidenav.close()">Foo</mat-list-item>
-      <mat-list-item [routerLink]="['/library/dashboard']" (click)="sidenav.close()">Bar</mat-list-item>
+      <mat-list-item [routerLink]="['/library/books']" (click)="sidenav.close()">All Books</mat-list-item>
+      <mat-list-item [routerLink]="['/library/checkedout']" (click)="sidenav.close()">Checked Out Books</mat-list-item>
       <h3 mat-subheader>Students</h3>
-      <mat-list-item [routerLink]="['/']" (click)="sidenav.close()">Foo</mat-list-item>
-      <mat-list-item [routerLink]="['/library/dashboard']" (click)="sidenav.close()">Bar</mat-list-item>
+      <mat-list-item [routerLink]="['/library/students']" (click)="sidenav.close()">All Students</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <div class="wrapper">

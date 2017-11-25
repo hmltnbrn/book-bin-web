@@ -1,0 +1,34 @@
+<div class="books-container">
+  <div class="book-card" *ngFor="let book of booksData.result; let i = index">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>book</mat-icon>
+        </div>
+        <mat-card-title>{{book.title}}</mat-card-title>
+        <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="card-content">
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button [disabled]="book.number_in == 0">CHECK OUT ({{book.number_in}})</button>
+        <button mat-button [disabled]="book.number_out == 0">CHECK IN ({{book.number_out}})</button>
+      </mat-card-actions>
+      <mat-chip-list>
+        <mat-chip>{{book.genre}}</mat-chip>
+      </mat-chip-list>
+    </mat-card>
+    <div class="reading-level" *ngIf="book.reading_level">{{book.reading_level}}</div>
+  </div>
+</div>
+<app-paginator
+  [totalItems]="booksData.totalItems"
+  [pageSize]="booksData.pageSize"
+  [pageTotal]="booksData.pageTotal"
+  [pageUrl]="'/library/books'"
+></app-paginator>

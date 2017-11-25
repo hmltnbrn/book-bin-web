@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { AccountService } from '../../services/account.service';
-import { StorageService } from '../../services/storage.service';
+import { AccountService } from '@services/account.service';
+import { StorageService } from '@services/storage.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,19 +18,18 @@ export class SignInComponent implements OnInit {
 
   apiError: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private accountService: AccountService, private storageService: StorageService) {
-    this.signInForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      staySignedIn: new FormControl(true)
-    });
-  }
+  constructor(private route: ActivatedRoute, private router: Router, private accountService: AccountService, private storageService: StorageService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params.redirectFor) {
         this.apiError = params.redirectFor;
       }
+    });
+    this.signInForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      staySignedIn: new FormControl(true)
     });
   }
 

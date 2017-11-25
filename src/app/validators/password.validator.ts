@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 
-export class PasswordValidation {
+export class PasswordValidator {
 
   static MatchPassword(control: AbstractControl) {
     let password = control.get('password').value;

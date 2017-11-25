@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { StorageService } from '../../services/storage.service';
+import { Component } from '@angular/core';
+import { StorageService } from '@services/storage.service';
 
 @Component({
   selector: 'app-wrapper',
@@ -7,15 +7,12 @@ import { StorageService } from '../../services/storage.service';
   styleUrls: ['./wrapper.component.scss'],
   providers: [StorageService]
 })
-export class WrapperComponent implements OnInit {
+export class WrapperComponent {
 
   username: string;
 
   constructor(private storageService: StorageService) {
     this.username = this.storageService.getItem('username');
-  }
-
-  ngOnInit() {
   }
 
 }

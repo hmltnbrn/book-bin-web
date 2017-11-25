@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app.routing';
-import { MaterialModule } from './modules/material/material.module';
 import { SharedModule } from './modules/shared/shared.module';
 
 import { AccountService } from './services/account.service';
@@ -53,12 +53,10 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
+    SharedModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    SharedModule
+    BrowserAnimationsModule
   ],
   providers: [
     AccountService,

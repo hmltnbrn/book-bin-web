@@ -9,12 +9,12 @@ export class StudentService {
 
   GetAllStudents() {
     var body = "";
-    return this.http.post(environment.api + '/students', JSON.stringify(body));
+    return this.http.post(environment.api + '/Students', JSON.stringify(body));
   }
 
   GetStudent(id: number) {
     var body = "";
-    return this.http.post(environment.api + '/students/' + id, JSON.stringify(body));
+    return this.http.post(environment.api + '/Students/' + id, JSON.stringify(body));
   }
 
 }

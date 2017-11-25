@@ -1,0 +1,29 @@
+@import '~sass/variables';
+
+.books-container {
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-card {
+  width: 300px;
+  margin: 20px;
+  position: relative;
+}
+
+.card-content {
+  min-height: 50px;
+}
+
+.reading-level {
+  display: inline-block;
+  padding: 10px 15px;
+  background: $primary-color;
+  color: $white-subdued;
+  border-radius: 30px;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}

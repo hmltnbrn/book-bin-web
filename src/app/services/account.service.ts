@@ -8,29 +8,29 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   Register(user) {
-    return this.http.post(environment.api + '/auth/signup', user);
+    return this.http.post(environment.api + '/auth/SignUp', user);
   }
 
   SignIn(user) {
-    return this.http.post(environment.api + '/auth/signin', user);
+    return this.http.post(environment.api + '/auth/SignIn', user);
   }
 
   ActivateAccount(token) {
-    return this.http.post(environment.api + '/auth/activate', 'token=' + token, {
+    return this.http.post(environment.api + '/auth/Activate', 'token=' + token, {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     });
   }
 
   ForgotPassword(email) {
-    return this.http.post(environment.api + '/auth/forgotpassword', email);
+    return this.http.post(environment.api + '/auth/ForgotPassword', email);
   }
 
   ResetPassword(data) {
-    return this.http.post(environment.api + '/auth/resetpassword', data);
+    return this.http.post(environment.api + '/auth/ResetPassword', data);
   }
 
   ForgotUsername(email) {
-    return this.http.post(environment.api + '/auth/forgotusername', email);
+    return this.http.post(environment.api + '/auth/ForgotUsername', email);
   }
 
 }

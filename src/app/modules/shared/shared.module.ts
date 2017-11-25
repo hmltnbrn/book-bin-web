@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { MaterialModule } from '@modules/material/material.module';
 
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   imports: [
-    MatProgressSpinnerModule
+    CommonModule,
+    MaterialModule
   ],
   declarations: [
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    PaginatorComponent
   ],
   exports: [
-    MatProgressSpinnerModule,
-    LoadingSpinnerComponent
+    CommonModule,
+    MaterialModule,
+    LoadingSpinnerComponent,
+    PaginatorComponent
   ]
 })
 export class SharedModule { }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { AccountService } from '../../services/account.service';
-import { StorageService } from '../../services/storage.service';
-import { PasswordValidation } from '../../validators/password-validation';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AccountService } from '@services/account.service';
+import { StorageService } from '@services/storage.service';
+import { PasswordValidator } from '@validators/password.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,7 +23,9 @@ export class SignUpComponent implements OnInit {
 
   titles: Array<string> = ['Mr.', 'Mrs.', 'Miss', 'Ms.', 'Dr.'];
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) {
+  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) { }
+
+  ngOnInit() {
     this.signUpForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}/)]),
@@ -35,11 +37,7 @@ export class SignUpComponent implements OnInit {
       schoolName: new FormControl('', Validators.required),
       zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),
       role: new FormControl(2)
-    }, PasswordValidation.MatchPassword);
-  }
-
-  ngOnInit() {
-
+    }, PasswordValidator.MatchPassword);
   }
 
   getErrorMessage(control: FormControl, field?: string) {

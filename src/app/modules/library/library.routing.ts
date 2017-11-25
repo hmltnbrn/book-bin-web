@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from '../../services/guards/auth.guard.service';
+import { AuthGuard } from '@services/guards/auth.guard.service';
 
-import { LibraryComponent } from './components/library/library.component';
+import { AllBooksResolver } from './components/books/services/books.resolver.service';
+
+import { LibraryComponent } from './library.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BooksComponent } from './components/books/books.component';
 
 const routes: Routes = [
   { 
@@ -15,6 +18,14 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'books',
+        component: BooksComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        resolve: {
+          books: AllBooksResolver
+        }
       }
     ]
   }
@@ -22,6 +33,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
+  exports: [ RouterModule ],
+  providers: [
+    AllBooksResolver
+  ]
 })
 export class LibraryRoutingModule { }
