@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReadingLevels } from '@global/reading-levels.global';
+import { MultipleResponseModel } from '@models/multiple-response.model';
 
 @Component({
   selector: 'app-books',
@@ -10,7 +11,7 @@ import { ReadingLevels } from '@global/reading-levels.global';
 })
 export class BooksComponent implements OnInit {
 
-  booksData: object;
+  booksData: MultipleResponseModel;
 
   constructor(private route: ActivatedRoute, private router: Router, private readingLevels: ReadingLevels) { }
 

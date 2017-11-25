@@ -26,6 +26,9 @@
       "@global/*": [
         "app/global/*"
       ],
+      "@models/*": [
+        "app/models/*"
+      ],
       "@modules/*": [
         "app/modules/*"
       ],

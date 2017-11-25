@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { MultipleResponseModel } from '@models/multiple-response.model';
 
 @Injectable()
 export class BookService {
@@ -11,7 +12,7 @@ export class BookService {
     let params = new HttpParams();
     params = params.append('page', page ? page: '0');
     params = params.append('pageSize', pageSize ? pageSize : '0');
-    return this.http.get(environment.api + '/api/Books', {
+    return this.http.get<MultipleResponseModel>(environment.api + '/api/Books', {
       params: params
     });
   }
