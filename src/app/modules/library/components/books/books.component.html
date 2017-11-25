@@ -1,4 +1,9 @@
+<app-search
+  [placeholderText]="'Search for a title, author, or genre'"
+  [pageUrl]="'/library/books'"
+></app-search>
 <div class="books-container">
+  <p class="no-results" *ngIf="booksData.result.length == 0">No Results</p>
   <div class="book-card" *ngFor="let book of booksData.result; let i = index">
     <mat-card>
       <mat-card-header>
@@ -15,15 +20,22 @@
           bred for hunting.
         </p>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button [disabled]="book.number_in == 0">CHECK OUT ({{book.number_in}})</button>
-        <button mat-button [disabled]="book.number_out == 0">CHECK IN ({{book.number_out}})</button>
+      <mat-card-actions class="card-actions">
+        <button mat-button color="primary" [disabled]="book.number_in == 0">CHECK OUT ({{book.number_in}})</button>
+        <button mat-button color="accent" [disabled]="book.number_out == 0">CHECK IN ({{book.number_out}})</button>
       </mat-card-actions>
       <mat-chip-list>
         <mat-chip>{{book.genre}}</mat-chip>
       </mat-chip-list>
     </mat-card>
     <div class="reading-level" *ngIf="book.reading_level">{{book.reading_level}}</div>
+    <button mat-icon-button class="options-button" [matMenuTriggerFor]="menu">
+      <mat-icon aria-label="More options">more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item [routerLink]="['/library/books/' + book.id]">View and Edit</a>
+      <a mat-menu-item [routerLink]="['/library/books/' + book.id]">Remove</a>
+    </mat-menu>
   </div>
 </div>
 <app-paginator

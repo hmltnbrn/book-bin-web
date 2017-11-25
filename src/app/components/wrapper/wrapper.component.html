@@ -1,7 +1,7 @@
 <app-header [username]="username" (toggleSide)="sidenav.toggle()" (closeSide)="sidenav.close()"></app-header>
 <mat-sidenav-container class="sidenav-container" fullscreen>
   <mat-sidenav #sidenav class="sidenav-window">
-    <h1>Navigate</h1>
+    <h2 class="sidenav-title">My Library</h2>
     <mat-nav-list>
       <h3 mat-subheader>Books</h3>
       <mat-list-item [routerLink]="['/library/books']" (click)="sidenav.close()">All Books</mat-list-item>

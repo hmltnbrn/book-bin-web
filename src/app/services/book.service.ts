@@ -8,10 +8,11 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  GetAllBooks(page?: string, pageSize?: string) {
+  GetAllBooks(page?: string, pageSize?: string, search?: string) {
     let params = new HttpParams();
     params = params.append('page', page ? page: '0');
     params = params.append('pageSize', pageSize ? pageSize : '0');
+    params = params.append('search', search ? search : '');
     return this.http.get<MultipleResponseModel>(environment.api + '/api/Books', {
       params: params
     });

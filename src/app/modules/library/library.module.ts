@@ -12,6 +12,7 @@ import { BooksComponent } from './components/books/books.component';
 @NgModule({
   imports: [
     LibraryRoutingModule,
+    CommonModule,
     SharedModule
   ],
   declarations: [

@@ -53,9 +53,10 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
   ],
   imports: [
     AppRoutingModule,
+    CommonModule,
+    BrowserModule,
     SharedModule,
     HttpClientModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   providers: [

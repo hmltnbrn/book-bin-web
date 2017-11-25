@@ -31,6 +31,11 @@ const routes: Routes = [
         path: 'library',
         loadChildren: 'app/modules/library/library.module#LibraryModule',
         canLoad: [AuthGuard]
+      },
+      {
+        path: 'profile',
+        loadChildren: 'app/modules/profile/profile.module#ProfileModule',
+        canLoad: [AuthGuard]
       }
     ]
   },
