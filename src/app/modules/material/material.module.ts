@@ -14,6 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
@@ -50,7 +54,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

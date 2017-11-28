@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@services/guards/auth.guard.service';
 
 import { AllBooksResolver } from './components/books/services/books.resolver.service';
+import { AllActiveStudentsResolver } from './components/books/services/students.resolver.service';
 
 import { LibraryComponent } from './library.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -24,7 +25,8 @@ const routes: Routes = [
         component: BooksComponent,
         runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         resolve: {
-          books: AllBooksResolver
+          books: AllBooksResolver,
+          students: AllActiveStudentsResolver
         }
       }
     ]
@@ -35,7 +37,8 @@ const routes: Routes = [
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ],
   providers: [
-    AllBooksResolver
+    AllBooksResolver,
+    AllActiveStudentsResolver
   ]
 })
 export class LibraryRoutingModule { }

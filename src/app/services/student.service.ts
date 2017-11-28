@@ -7,14 +7,13 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
 
-  GetAllStudents() {
-    var body = "";
-    return this.http.post(environment.api + '/Students', JSON.stringify(body));
+  GetAllActiveStudents() {
+    return this.http.get(environment.api + '/api/Students/GetAllActiveStudents');
   }
 
   GetStudent(id: number) {
     var body = "";
-    return this.http.post(environment.api + '/Students/' + id, JSON.stringify(body));
+    return this.http.post(environment.api + '/api/Students/' + id, JSON.stringify(body));
   }
 
 }

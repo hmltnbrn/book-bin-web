@@ -4,10 +4,12 @@ import { LibraryRoutingModule } from './library.routing';
 import { SharedModule } from '@modules/shared/shared.module';
 
 import { BookService } from '@services/book.service';
+import { StudentService } from '@services/student.service';
 
 import { LibraryComponent } from './library.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
+import { StudentCheckOutComponent } from './components/dialogs/student-check-out/student-check-out.component';
 
 @NgModule({
   imports: [
@@ -18,10 +20,15 @@ import { BooksComponent } from './components/books/books.component';
   declarations: [
     DashboardComponent,
     LibraryComponent,
-    BooksComponent
+    BooksComponent,
+    StudentCheckOutComponent
+  ],
+  entryComponents: [
+    StudentCheckOutComponent
   ],
   providers: [
-    BookService
+    BookService,
+    StudentService
   ]
 })
 export class LibraryModule { }

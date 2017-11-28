@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{data.title || 'Alert'}}</h2>
+<mat-dialog-content>
+  <p>Choose a name from the dropdown menu to check out the book.</p>
+  <form>
+    <mat-form-field class="form-full-width">
+      <input type="text" placeholder="Students" aria-label="Students" matInput [formControl]="studentControl" [matAutocomplete]="auto" tabindex="-1">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let student of filteredStudents | async" [value]="student">
+          {{ student.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">{{data.closeButton || 'Cancel'}}</button>
+  <button mat-button (click)="onSubmit()" [disabled]="!studentControl.value.id">{{data.okButton || 'OK'}}</button>
+</mat-dialog-actions>

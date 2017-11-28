@@ -14,7 +14,7 @@ export class AllBooksResolver implements Resolve<any> {
     let pageSize = route.queryParams['pageSize'] ? route.queryParams['pageSize'] : '12';
     let search = route.queryParams['search'] ? route.queryParams['search'] : '';
 
-    return this.bookService.GetAllBooks(page, pageSize, search).catch(err => {
+    return this.bookService.GetAllTeacherBooks(page, pageSize, search).catch(err => {
       return Observable.of(err.error);
     });
   }

@@ -22,13 +22,19 @@ export class BookService {
     return this.http.get(environment.api + '/api/Books/' + id);
   }
 
-  GetAllTeacherBooks(page?: string, pageSize?: string) {
+  GetAllTeacherBooks(page?: string, pageSize?: string, search?: string) {
     let params = new HttpParams();
     params = params.append('page', page ? page: '0');
     params = params.append('pageSize', pageSize ? pageSize : '0');
+    params = params.append('search', search ? search : '');
     return this.http.get(environment.api + '/api/Books/GetAllTeacherBooks', {
       params: params
     });
+  }
+
+  CheckOutBook(bookId: number, studentId: number) {
+    let body = { book: bookId, student: studentId };
+    return this.http.post(environment.api + '/api/Books/CheckOutBook', body);
   }
 
 }
