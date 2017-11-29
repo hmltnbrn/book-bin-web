@@ -13,6 +13,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onCancel()">{{data.closeButton || 'Cancel'}}</button>
+  <button mat-button (click)="onCancel()">{{data.cancelButton || 'Cancel'}}</button>
   <button mat-button (click)="onSubmit()" [disabled]="!studentControl.value.id">{{data.okButton || 'OK'}}</button>
 </mat-dialog-actions>
