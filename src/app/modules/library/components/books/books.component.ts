@@ -35,11 +35,11 @@ export class BooksComponent implements OnInit {
       minWidth: '250px',
       maxWidth: '550px',
       width: '80vw',
-      data: { title: title, students: this.studentsData.result }
+      data: { title: title, students: this.studentsData.result, bookId: id }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
-      if(result) this.checkOutBook(id, result);
+      //if(result) this.checkOutBook(id, result);
     });
   }
 

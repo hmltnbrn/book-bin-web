@@ -8,7 +8,7 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
   GetAllActiveStudents() {
-    return this.http.get(environment.api + '/api/Students/GetAllActiveStudents');
+    return this.http.get(environment.api + '/api/Students/ActiveStudents');
   }
 
   GetStudent(id: number) {

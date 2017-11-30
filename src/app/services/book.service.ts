@@ -27,14 +27,14 @@ export class BookService {
     params = params.append('page', page ? page: '0');
     params = params.append('pageSize', pageSize ? pageSize : '0');
     params = params.append('search', search ? search : '');
-    return this.http.get(environment.api + '/api/Books/GetAllTeacherBooks', {
+    return this.http.get(environment.api + '/api/Books/TeacherBooks', {
       params: params
     });
   }
 
   CheckOutBook(bookId: number, studentId: number) {
     let body = { book: bookId, student: studentId };
-    return this.http.post(environment.api + '/api/Books/CheckOutBook', body);
+    return this.http.post(environment.api + '/api/Books/CheckOut', body);
   }
 
 }

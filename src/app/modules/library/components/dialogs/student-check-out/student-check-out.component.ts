@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { BookService } from '@services/book.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
@@ -12,7 +13,8 @@ export class Student {
 @Component({
   selector: 'dialog-student-check-out',
   templateUrl: './student-check-out.component.html',
-  styleUrls: ['./student-check-out.component.scss']
+  styleUrls: ['./student-check-out.component.scss'],
+  providers: [BookService]
 })
 export class StudentCheckOutComponent {
 
@@ -21,10 +23,15 @@ export class StudentCheckOutComponent {
   students: Array<any> = [];
   filteredStudents: Observable<Student[]>;
 
-  constructor(public dialogRef: MatDialogRef<StudentCheckOutComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  bookId: number;
+
+  isSubmitted: boolean = false;
+
+  constructor(public dialogRef: MatDialogRef<StudentCheckOutComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private bookService: BookService) {
     for(var i=0; i<data.students.length; i++) {
       this.students.push(new Student(data.students[i].first_name + ' ' + data.students[i].last_name, data.students[i].id));
     }
+    this.bookId = data.bookId;
   }
 
   ngOnInit() {
@@ -45,12 +52,27 @@ export class StudentCheckOutComponent {
     return student ? student.name : student;
   }
 
+  checkOutBook(studentId: number) {
+    this.bookService.CheckOutBook(this.bookId, studentId).subscribe(
+      data => {
+        console.log(data);
+        this.isSubmitted = true;
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
   onCancel(): void {
     this.dialogRef.close(false);
   }
 
   onSubmit(): void {
-    this.dialogRef.close(this.studentControl.value.id);
+    this.checkOutBook(this.studentControl.value.id);
+  }
+
+  onOk(): void {
+    this.dialogRef.close(true);
   }
 
 }

@@ -1,18 +1,24 @@
 <h2 mat-dialog-title>{{data.title || 'Alert'}}</h2>
 <mat-dialog-content>
-  <p>Choose a name from the dropdown menu to check out the book.</p>
-  <form>
-    <mat-form-field class="form-full-width">
-      <input type="text" placeholder="Students" aria-label="Students" matInput [formControl]="studentControl" [matAutocomplete]="auto" tabindex="-1">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let student of filteredStudents | async" [value]="student">
-          {{ student.name }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
+  <ng-container *ngIf="!isSubmitted">
+    <p>Choose a name from the dropdown menu to check out the book.</p>
+    <form>
+      <mat-form-field class="form-full-width">
+        <input type="text" placeholder="Students" aria-label="Students" matInput [formControl]="studentControl" [matAutocomplete]="auto" tabindex="-1">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let student of filteredStudents | async" [value]="student">
+            {{ student.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="isSubmitted">
+    <p>Book Checked Out</p>
+  </ng-container>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onCancel()">{{data.cancelButton || 'Cancel'}}</button>
-  <button mat-button (click)="onSubmit()" [disabled]="!studentControl.value.id">{{data.okButton || 'OK'}}</button>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onCancel()" *ngIf="!isSubmitted">{{data.cancelButton || 'Cancel'}}</button>
+  <button mat-button (click)="onSubmit()" [disabled]="!studentControl.value.id" *ngIf="!isSubmitted">{{data.okButton || 'Check Out'}}</button>
+  <button mat-button (click)="onOk()" *ngIf="isSubmitted">{{data.okButton || 'OK'}}</button>
 </mat-dialog-actions>
