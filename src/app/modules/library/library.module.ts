@@ -10,6 +10,7 @@ import { LibraryComponent } from './library.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
 import { StudentCheckOutComponent } from './components/dialogs/student-check-out/student-check-out.component';
+import { StudentCheckInComponent } from './components/dialogs/student-check-in/student-check-in.component';
 
 @NgModule({
   imports: [
@@ -21,10 +22,12 @@ import { StudentCheckOutComponent } from './components/dialogs/student-check-out
     DashboardComponent,
     LibraryComponent,
     BooksComponent,
-    StudentCheckOutComponent
+    StudentCheckOutComponent,
+    StudentCheckInComponent
   ],
   entryComponents: [
-    StudentCheckOutComponent
+    StudentCheckOutComponent,
+    StudentCheckInComponent
   ],
   providers: [
     BookService,

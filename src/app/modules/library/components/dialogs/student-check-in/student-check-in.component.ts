@@ -15,12 +15,12 @@ export class Student {
 }
 
 @Component({
-  selector: 'dialog-student-check-out',
-  templateUrl: './student-check-out.component.html',
-  styleUrls: ['./student-check-out.component.scss'],
+  selector: 'dialog-student-check-in',
+  templateUrl: './student-check-in.component.html',
+  styleUrls: ['./student-check-in.component.scss'],
   providers: [BookService]
 })
-export class StudentCheckOutComponent {
+export class StudentCheckInComponent {
 
   studentControl: FormControl = new FormControl('', [Validators.required, TypeValidator(Student)]);
 
@@ -33,7 +33,7 @@ export class StudentCheckOutComponent {
 
   apiError: string;
 
-  constructor(public dialogRef: MatDialogRef<StudentCheckOutComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private bookService: BookService) {
+  constructor(public dialogRef: MatDialogRef<StudentCheckInComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private bookService: BookService) {
     for(var i=0; i<data.students.length; i++) {
       this.students.push(new Student(data.students[i].id, data.students[i].first_name, data.students[i].last_name));
     }
@@ -61,9 +61,9 @@ export class StudentCheckOutComponent {
     return student ? student.name : student;
   }
 
-  checkOutBook(studentId: number) {
-    this.apiError = "";
-    this.bookService.CheckOutBook(this.bookId, studentId).subscribe(
+  checkInBook(studentId: number) {
+    console.log(this.studentControl.value)
+    this.bookService.CheckInBook(this.bookId, studentId).subscribe(
       data => {
         console.log(data);
         this.isSubmitted = true;
@@ -79,7 +79,7 @@ export class StudentCheckOutComponent {
   }
 
   onSubmit(): void {
-    this.checkOutBook(this.studentControl.value.id);
+    this.checkInBook(this.studentControl.value.id);
   }
 
   onOk(): void {

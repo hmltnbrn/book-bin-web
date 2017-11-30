@@ -18,7 +18,7 @@
       </mat-card-content>
       <mat-card-actions class="card-actions">
         <button mat-button color="primary" [disabled]="book.number_in == 0" (click)="checkOutDialog(book.book_id, book.title)">CHECK OUT ({{book.number_in}})</button>
-        <button mat-button color="accent" [disabled]="book.number_out == 0">CHECK IN ({{book.number_out}})</button>
+        <button mat-button color="accent" [disabled]="book.number_out == 0" (click)="getStudentsWithBook(book.book_id, book.title)">CHECK IN ({{book.number_out}})</button>
       </mat-card-actions>
       <mat-chip-list>
         <mat-chip *ngFor="let genre of book.genres; let j = index">{{genre}}</mat-chip>

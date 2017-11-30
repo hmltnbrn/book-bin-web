@@ -32,9 +32,22 @@ export class BookService {
     });
   }
 
+  GetStudentsWithBook(bookId) {
+    let params = new HttpParams();
+    params = params.append('book_id', bookId);
+    return this.http.get(environment.api + '/api/Books/Students', {
+      params: params
+    });
+  }
+
   CheckOutBook(bookId: number, studentId: number) {
-    let body = { book: bookId, student: studentId };
+    let body = { book_id: bookId, student_id: studentId };
     return this.http.post(environment.api + '/api/Books/CheckOut', body);
+  }
+
+  CheckInBook(bookId: number, studentId: number) {
+    let body = { book_id: bookId, student_id: studentId };
+    return this.http.post(environment.api + '/api/Books/CheckIn', body);
   }
 
 }
