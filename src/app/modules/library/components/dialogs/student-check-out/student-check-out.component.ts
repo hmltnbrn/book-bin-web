@@ -87,7 +87,8 @@ export class StudentCheckOutComponent {
   }
 
   onError(error) {
-    this.apiError = error.error.message;
+    if(error.status === 500) this.dialogRef.close(false);
+    else this.apiError = error.error.message;
   }
 
 }

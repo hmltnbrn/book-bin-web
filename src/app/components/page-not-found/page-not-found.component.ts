@@ -9,4 +9,8 @@ export class PageNotFoundComponent {
 
   constructor() { }
 
+  back() {
+    window.history.back();
+  }
+
 }

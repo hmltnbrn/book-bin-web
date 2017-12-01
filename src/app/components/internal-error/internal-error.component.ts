@@ -9,4 +9,8 @@ export class InternalErrorComponent {
 
   constructor() { }
 
+  refresh() {
+    window.location.reload();
+  }
+
 }
