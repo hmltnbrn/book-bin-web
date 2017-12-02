@@ -18,6 +18,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatAutocompleteModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    A11yModule
   ],
   exports: [
     MatButtonModule,
@@ -62,7 +64,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatAutocompleteModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    A11yModule
   ]
 })
 export class MaterialModule { }
