@@ -16,6 +16,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatChipsModule,
     MatTabsModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   exports: [
     MatButtonModule,
@@ -56,7 +60,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatChipsModule,
     MatTabsModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ]
 })
 export class MaterialModule { }

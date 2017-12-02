@@ -40,8 +40,8 @@ export class BookService {
     });
   }
 
-  CheckOutBook(bookId: number, studentId: number) {
-    let body = { book_id: bookId, student_id: studentId };
+  CheckOutBook(bookId: number, studentId: number, dueDate: number) {
+    let body = { book_id: bookId, student_id: studentId, date_due: dueDate };
     return this.http.post(environment.api + '/api/Books/CheckOut', body);
   }
 

@@ -4,10 +4,10 @@
     <div class="error-indicator" *ngIf="apiError">
       {{apiError}}
     </div>
-    <p>Choose a name from the dropdown menu to check out the book.</p>
+    <p>Choose a name from the dropdown menu and add an optional due date.</p>
     <form>
       <mat-form-field class="form-full-width">
-        <input type="text" placeholder="Students" aria-label="Students" matInput [formControl]="studentControl" [matAutocomplete]="auto" tabindex="-1">
+        <input type="text" placeholder="Students" aria-label="Students" matInput [formControl]="studentControl" [matAutocomplete]="auto" tabindex="0">
         <button mat-button *ngIf="studentControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="studentControl.reset('')">
           <mat-icon>close</mat-icon>
         </button>
@@ -18,6 +18,15 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
+      <div class="date-picker">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Due date" [formControl]="dateControl">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-error *ngIf="!dateControl.valid">Date is not valid</mat-error>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-button (click)="addTime()">Add 2 Weeks</button>
+      </div>
     </form>
   </ng-container>
   <ng-container *ngIf="isSubmitted">
@@ -26,6 +35,6 @@
 </mat-dialog-content>
 <mat-dialog-actions class="dialog-actions">
   <button mat-button (click)="onCancel()" *ngIf="!isSubmitted">{{data.cancelButton || 'Cancel'}}</button>
-  <button mat-button (click)="onSubmit()" [disabled]="!studentControl.valid" *ngIf="!isSubmitted">{{data.okButton || 'Check Out'}}</button>
+  <button mat-button (click)="onSubmit()" [disabled]="!studentControl.valid || !dateControl.valid" *ngIf="!isSubmitted">{{data.okButton || 'Check Out'}}</button>
   <button mat-button (click)="onOk()" *ngIf="isSubmitted">{{data.okButton || 'OK'}}</button>
 </mat-dialog-actions>

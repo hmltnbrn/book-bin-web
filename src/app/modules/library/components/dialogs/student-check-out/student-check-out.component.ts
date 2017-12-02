@@ -2,10 +2,13 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BookService } from '@services/book.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { TypeValidator } from '@validators/type.validator';
+import { ClassValidator } from '@validators/class.validator';
+import { MomentValidator } from '@validators/moment.validator';
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import * as moment from 'moment';
 
 export class Student {
   name: string;
@@ -22,12 +25,14 @@ export class Student {
 })
 export class StudentCheckOutComponent {
 
-  studentControl: FormControl = new FormControl('', [Validators.required, TypeValidator(Student)]);
+  studentControl: FormControl = new FormControl('', [Validators.required, ClassValidator(Student)]);
+  dateControl: FormControl = new FormControl('', MomentValidator());
 
   students: Array<any> = [];
   filteredStudents: Observable<Student[]>;
 
   bookId: number;
+  dueDate: any;
 
   isSubmitted: boolean = false;
 
@@ -61,9 +66,21 @@ export class StudentCheckOutComponent {
     return student ? student.name : student;
   }
 
+  addTime() {
+    if(this.dateControl.valid && this.dateControl.value) {
+      this.dateControl.setValue(<moment.Moment>(this.dateControl.value).add(14, 'd'));
+    }
+    else {
+      let newDate: moment.Moment = moment();
+      this.dateControl.setValue(moment([newDate.year(), newDate.month(), newDate.date()]).add(14, 'd'));
+    }
+  }
+
   checkOutBook(studentId: number) {
     this.apiError = "";
-    this.bookService.CheckOutBook(this.bookId, studentId).subscribe(
+    let dueDate: number;
+    if(this.dateControl.value) dueDate = moment.utc(<moment.Moment>(this.dateControl.value).toArray()).unix();
+    this.bookService.CheckOutBook(this.bookId, studentId, dueDate).subscribe(
       data => {
         console.log(data);
         this.isSubmitted = true;
