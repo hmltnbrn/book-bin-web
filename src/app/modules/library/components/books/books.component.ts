@@ -36,6 +36,7 @@ export class BooksComponent implements OnInit {
       minWidth: '250px',
       maxWidth: '550px',
       width: '80vw',
+      disableClose: true,
       data: { title: title, students: this.studentsData.result, bookId: id }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -44,23 +45,13 @@ export class BooksComponent implements OnInit {
     });
   }
 
-  getStudentsWithBook(id: number, title: string) {
-    this.bookService.GetStudentsWithBook(id).subscribe(
-      data => {
-        console.log(data);
-        this.checkInDialog(id, title, data["result"]);
-      },
-      error => {
-        console.log(error);
-      });
-  }
-
-  checkInDialog(id: number, title: string, students: Array<object>): void {
+  checkInDialog(id: number, title: string): void {
     let dialogRef = this.dialog.open(StudentCheckInComponent, {
       minWidth: '250px',
       maxWidth: '550px',
       width: '80vw',
-      data: { title: title, students: students, bookId: id }
+      disableClose: true,
+      data: { title: title, bookId: id }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)

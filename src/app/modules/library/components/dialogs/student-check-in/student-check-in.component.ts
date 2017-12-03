@@ -29,15 +29,12 @@ export class StudentCheckInComponent {
 
   bookId: number;
 
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   isSubmitted: boolean = false;
 
   apiError: string;
 
   constructor(public dialogRef: MatDialogRef<StudentCheckInComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private bookService: BookService) {
-    for(var i=0; i<data.students.length; i++) {
-      this.students.push(new Student(data.students[i].id, data.students[i].first_name, data.students[i].last_name));
-    }
     this.bookId = data.bookId;
   }
 
@@ -48,6 +45,7 @@ export class StudentCheckInComponent {
         map(student => student && typeof student === 'object' ? student.name : student),
         map(name => name ? this.filter(name) : this.students.slice())
       );
+    this.getStudentsWithBook(this.bookId);
   }
 
   filter(name): Student[] {
@@ -60,6 +58,26 @@ export class StudentCheckInComponent {
 
   displayFn(student): string {
     return student ? student.name : student;
+  }
+
+  getStudentsWithBook(id: number) {
+    this.bookService.GetStudentsWithBook(id).subscribe(
+      data => {
+        console.log(data);
+        setTimeout(()=>{
+          this.createStudents(data["result"]);
+        }, 1000);
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  createStudents(students) {
+    for(var i=0; i<students.length; i++) {
+      this.students.push(new Student(students[i].id, students[i].first_name, students[i].last_name));
+    }
+    this.isLoading = false;
   }
 
   checkInBook(studentId: number) {
@@ -83,6 +101,11 @@ export class StudentCheckInComponent {
       });
   }
 
+  onError(error) {
+    if(error.status === 500) this.dialogRef.close(false);
+    else this.apiError = error.error.message;
+  }
+
   onCancel(): void {
     this.dialogRef.close(false);
   }
@@ -93,11 +116,6 @@ export class StudentCheckInComponent {
 
   onOk(): void {
     this.dialogRef.close(true);
-  }
-
-  onError(error) {
-    if(error.status === 500) this.dialogRef.close(false);
-    else this.apiError = error.error.message;
   }
 
 }

@@ -29,7 +29,7 @@
     </form>
   </ng-container>
   <ng-container *ngIf="isSubmitted">
-    <p class="after-submit"><mat-icon class="check-icon">check_circle</mat-icon> Book Checked Out</p>
+    <app-success-indicator [successText]="'Book Checked Out'"></app-success-indicator>
   </ng-container>
 </mat-dialog-content>
 <mat-dialog-actions class="dialog-actions" *ngIf="!isLoading">

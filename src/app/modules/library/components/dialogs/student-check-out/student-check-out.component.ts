@@ -99,6 +99,11 @@ export class StudentCheckOutComponent {
       });
   }
 
+  onError(error) {
+    if(error.status === 500) this.dialogRef.close(false);
+    else this.apiError = error.error.message;
+  }
+
   onCancel(): void {
     this.dialogRef.close(false);
   }
@@ -109,11 +114,6 @@ export class StudentCheckOutComponent {
 
   onOk(): void {
     this.dialogRef.close(true);
-  }
-
-  onError(error) {
-    if(error.status === 500) this.dialogRef.close(false);
-    else this.apiError = error.error.message;
   }
 
 }

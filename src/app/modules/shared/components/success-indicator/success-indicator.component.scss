@@ -1,15 +1,15 @@
 @import '~sass/variables';
 
-.error-container {
+.success-container {
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: $error-color;
+  color: $success-color;
   line-height: normal;
   width: 300px;
   max-width: 100%;
 }
 
-.error-icon {
+.success-icon {
   margin: 0 10px 0 0;
 }

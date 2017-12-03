@@ -13,6 +13,8 @@ export class PaginatorComponent implements OnInit {
   @Input() pageTotal: number;
   @Input() pageUrl: string;
 
+  pageSizeOptions: Array<any> = [6, 12, 24, 48, 96];
+
   pageIndex: number;
 
   constructor(private route: ActivatedRoute, private router: Router) { }

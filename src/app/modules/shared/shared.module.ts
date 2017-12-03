@@ -10,6 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
 import { ErrorIndicatorComponent } from './components/error-indicator/error-indicator.component';
+import { SuccessIndicatorComponent } from './components/success-indicator/success-indicator.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ErrorIndicatorComponent } from './components/error-indicator/error-indi
     SearchComponent,
     AlertDialogComponent,
     ConfirmDialogComponent,
-    ErrorIndicatorComponent
+    ErrorIndicatorComponent,
+    SuccessIndicatorComponent
   ],
   entryComponents: [
     AlertDialogComponent,
@@ -38,7 +40,8 @@ import { ErrorIndicatorComponent } from './components/error-indicator/error-indi
     LoadingSpinnerComponent,
     PaginatorComponent,
     SearchComponent,
-    ErrorIndicatorComponent
+    ErrorIndicatorComponent,
+    SuccessIndicatorComponent
   ]
 })
 export class SharedModule { }
