@@ -6,12 +6,12 @@
   <a routerLink="../">Classroom Library</a>
 </div>
 <ng-container *ngIf="!emailSent">
+  <div class="center-error-indicator">
+    <app-error-indicator [errorText]="apiError"></app-error-indicator>
+  </div>
   <p class="info">
     Please enter your email and I'll send you your username.
   </p>
-  <div class="error-indicator" *ngIf="apiError">
-    {{apiError}}
-  </div>
   <form id="forgot-password-form" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="emailForm" novalidate>
     <mat-form-field>
       <input matInput [autofocus]="true" placeholder="Email" formControlName="email" required>

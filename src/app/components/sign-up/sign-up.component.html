@@ -5,8 +5,8 @@
 <div class="logo">
   <a routerLink="../">Classroom Library</a>
 </div>
-<div class="error-indicator" *ngIf="apiError">
-  {{apiError}}
+<div class="center-error-indicator">
+  <app-error-indicator [errorText]="apiError"></app-error-indicator>
 </div>
 <ng-container *ngIf="!signedUp">
   <form class="form-container" (ngSubmit)="onSubmit()" [formGroup]="signUpForm">

@@ -9,6 +9,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { SearchComponent } from './components/search/search.component';
 import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
+import { ErrorIndicatorComponent } from './components/error-indicator/error-indicator.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/conf
     PaginatorComponent,
     SearchComponent,
     AlertDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ErrorIndicatorComponent
   ],
   entryComponents: [
     AlertDialogComponent,
@@ -35,7 +37,8 @@ import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/conf
     MaterialModule,
     LoadingSpinnerComponent,
     PaginatorComponent,
-    SearchComponent
+    SearchComponent,
+    ErrorIndicatorComponent
   ]
 })
 export class SharedModule { }

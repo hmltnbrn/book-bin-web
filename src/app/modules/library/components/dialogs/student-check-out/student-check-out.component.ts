@@ -34,6 +34,7 @@ export class StudentCheckOutComponent {
   bookId: number;
   dueDate: any;
 
+  isLoading: boolean = false;
   isSubmitted: boolean = false;
 
   apiError: string;
@@ -80,14 +81,21 @@ export class StudentCheckOutComponent {
     this.apiError = "";
     let dueDate: number;
     if(this.dateControl.value) dueDate = moment.utc(<moment.Moment>(this.dateControl.value).toArray()).unix();
+    this.isLoading = true;
     this.bookService.CheckOutBook(this.bookId, studentId, dueDate).subscribe(
       data => {
         console.log(data);
-        this.isSubmitted = true;
+        setTimeout(()=>{
+          this.isSubmitted = true;
+          this.isLoading = false;
+        }, 1000);
       },
       error => {
         console.log(error);
-        this.onError(error);
+        setTimeout(()=>{
+          this.onError(error);
+          this.isLoading = false;
+        }, 1000);
       });
   }
 

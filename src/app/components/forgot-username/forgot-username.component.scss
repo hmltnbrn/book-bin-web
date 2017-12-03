@@ -5,15 +5,17 @@
   @include logo(70px);
 }
 
-.error-indicator {
-  margin: 20px auto;
-}
-
 .info {
   font-size: 14px;
+  margin: 20px auto;
+  width: 300px;
+}
+
+.info.after {
+  width: 80%;
   display: flex;
   justify-content: center;
-  margin: 20px 30px;
+  padding: 0 20px;
 }
 
 .form-container {
@@ -31,15 +33,4 @@
 button {
   width: 300px;
   margin: 20px 10px
-}
-
-@media (max-width: 550px) {
-  .info {
-    width: 300px;
-    margin: 20px auto;
-  }
-
-  .after {
-    text-align: center;
-  }
 }

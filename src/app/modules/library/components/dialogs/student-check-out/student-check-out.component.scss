@@ -8,7 +8,12 @@ form {
   width: 100%;
 }
 
-.error-indicator {
-  margin: 0 0 20px 0;
-  width: 80%;
+.after-submit {
+  display: flex;
+  align-items: center;
+}
+
+.check-icon {
+  color: #4CAF50;
+  margin: 0 10px 0 0;
 }

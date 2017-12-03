@@ -11,7 +11,8 @@ a {
 }
 
 .error-indicator {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .form-container {

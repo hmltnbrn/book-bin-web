@@ -29,6 +29,7 @@ export class StudentCheckInComponent {
 
   bookId: number;
 
+  isLoading: boolean = false;
   isSubmitted: boolean = false;
 
   apiError: string;
@@ -63,14 +64,22 @@ export class StudentCheckInComponent {
 
   checkInBook(studentId: number) {
     console.log(this.studentControl.value)
+    this.apiError = "";
+    this.isLoading = true;
     this.bookService.CheckInBook(this.bookId, studentId).subscribe(
       data => {
         console.log(data);
-        this.isSubmitted = true;
+        setTimeout(()=>{
+          this.isSubmitted = true;
+          this.isLoading = false;
+        }, 1000);
       },
       error => {
         console.log(error);
-        this.onError(error);
+        setTimeout(()=>{
+          this.onError(error);
+          this.isLoading = false;
+        }, 1000);
       });
   }
 

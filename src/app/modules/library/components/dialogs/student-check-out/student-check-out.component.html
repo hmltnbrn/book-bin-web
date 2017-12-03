@@ -1,13 +1,12 @@
 <h2 mat-dialog-title>{{data.title || 'Alert'}}</h2>
-<mat-dialog-content>
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<mat-dialog-content *ngIf="!isLoading">
   <ng-container *ngIf="!isSubmitted">
-    <div class="error-indicator" *ngIf="apiError">
-      {{apiError}}
-    </div>
+    <app-error-indicator [errorText]="apiError"></app-error-indicator>
     <p>Choose a name from the dropdown menu and add an optional due date.</p>
     <form>
       <mat-form-field class="form-full-width">
-        <input type="text" placeholder="Students" aria-label="Students" matInput [formControl]="studentControl" [matAutocomplete]="auto" tabindex="0">
+        <input type="text" placeholder="Students" aria-label="Students" matInput [formControl]="studentControl" [matAutocomplete]="auto">
         <button mat-button *ngIf="studentControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="studentControl.reset('')">
           <mat-icon>close</mat-icon>
         </button>
@@ -30,11 +29,11 @@
     </form>
   </ng-container>
   <ng-container *ngIf="isSubmitted">
-    <p>Book Checked Out</p>
+    <p class="after-submit"><mat-icon class="check-icon">check_circle</mat-icon> Book Checked Out</p>
   </ng-container>
 </mat-dialog-content>
-<mat-dialog-actions class="dialog-actions">
-  <button mat-button (click)="onCancel()" *ngIf="!isSubmitted">{{data.cancelButton || 'Cancel'}}</button>
+<mat-dialog-actions class="dialog-actions" *ngIf="!isLoading">
+  <button mat-button (click)="onCancel()" *ngIf="!isSubmitted" cdkFocusInitial>{{data.cancelButton || 'Cancel'}}</button>
   <button mat-button (click)="onSubmit()" [disabled]="!studentControl.valid || !dateControl.valid" *ngIf="!isSubmitted">{{data.okButton || 'Check Out'}}</button>
   <button mat-button (click)="onOk()" *ngIf="isSubmitted">{{data.okButton || 'OK'}}</button>
 </mat-dialog-actions>
