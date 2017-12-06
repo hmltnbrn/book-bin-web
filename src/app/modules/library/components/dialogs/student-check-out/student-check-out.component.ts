@@ -85,17 +85,13 @@ export class StudentCheckOutComponent {
     this.bookService.CheckOutBook(this.bookId, studentId, dueDate).subscribe(
       data => {
         console.log(data);
-        setTimeout(()=>{
-          this.isSubmitted = true;
-          this.isLoading = false;
-        }, 1000);
+        this.isSubmitted = true;
+        this.isLoading = false;
       },
       error => {
         console.log(error);
-        setTimeout(()=>{
-          this.onError(error);
-          this.isLoading = false;
-        }, 1000);
+        this.onError(error);
+        this.isLoading = false;
       });
   }
 

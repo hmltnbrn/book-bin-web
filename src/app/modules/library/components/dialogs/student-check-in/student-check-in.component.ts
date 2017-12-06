@@ -64,9 +64,7 @@ export class StudentCheckInComponent {
     this.bookService.GetStudentsWithBook(id).subscribe(
       data => {
         console.log(data);
-        setTimeout(()=>{
-          this.createStudents(data["result"]);
-        }, 1000);
+        this.createStudents(data["result"]);
       },
       error => {
         console.log(error);
@@ -87,17 +85,13 @@ export class StudentCheckInComponent {
     this.bookService.CheckInBook(this.bookId, studentId).subscribe(
       data => {
         console.log(data);
-        setTimeout(()=>{
-          this.isSubmitted = true;
-          this.isLoading = false;
-        }, 1000);
+        this.isSubmitted = true;
+        this.isLoading = false;
       },
       error => {
         console.log(error);
-        setTimeout(()=>{
-          this.onError(error);
-          this.isLoading = false;
-        }, 1000);
+        this.onError(error);
+        this.isLoading = false;
       });
   }
 

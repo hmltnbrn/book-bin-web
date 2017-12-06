@@ -14,6 +14,7 @@ import { StorageService } from './services/storage.service';
 
 import { AuthGuard } from './services/guards/auth.guard.service';
 import { NoAuthGuard } from './services/guards/noauth.guard.service';
+import { CanDeactivateGuard } from './services/guards/can-deactivate.guard.service';
 
 import { AuthInterceptor } from './services/interceptors/auth.interceptor.service';
 
@@ -64,6 +65,7 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
     StorageService,
     AuthGuard,
     NoAuthGuard,
+    CanDeactivateGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

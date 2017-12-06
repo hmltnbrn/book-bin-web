@@ -12,8 +12,7 @@ export class StudentService {
   }
 
   GetStudent(id: number) {
-    var body = "";
-    return this.http.post(environment.api + '/api/Students/' + id, JSON.stringify(body));
+    return this.http.get(environment.api + '/api/Students/' + id);
   }
 
 }

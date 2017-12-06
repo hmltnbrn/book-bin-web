@@ -11,6 +11,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
 import { StudentCheckOutComponent } from './components/dialogs/student-check-out/student-check-out.component';
 import { StudentCheckInComponent } from './components/dialogs/student-check-in/student-check-in.component';
+import { BookListComponent } from './components/books/components/book-list/book-list.component';
+import { BookDetailComponent } from './components/books/components/book-detail/book-detail.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { StudentCheckInComponent } from './components/dialogs/student-check-in/s
     LibraryComponent,
     BooksComponent,
     StudentCheckOutComponent,
-    StudentCheckInComponent
+    StudentCheckInComponent,
+    BookListComponent,
+    BookDetailComponent
   ],
   entryComponents: [
     StudentCheckOutComponent,
