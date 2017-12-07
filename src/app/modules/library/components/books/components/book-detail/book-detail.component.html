@@ -73,7 +73,7 @@
         </ng-container>
         <ng-container matColumnDef="date_due">
           <mat-header-cell *matHeaderCellDef> Due Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{formatDate(element.date_due)}} </mat-cell>
+          <mat-cell *matCellDef="let element" class="due-date" [class.error]="dueDateStyle(element.date_due)"> {{formatDate(element.date_due)}} </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="currentColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: currentColumns;"></mat-row>

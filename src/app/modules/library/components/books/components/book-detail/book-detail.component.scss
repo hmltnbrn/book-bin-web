@@ -1,3 +1,5 @@
+@import '~sass/variables';
+
 .back-button-container {
   padding: 20px;
   display: flex;
@@ -58,15 +60,19 @@
 .student-lists {
   display: flex;
   flex-direction: column;
-  //max-height: 500px;
   width: 100%;
   max-width: 500px;
   margin: 20px;
 }
 
 .mat-table {
-  // overflow: auto;
-  // max-height: 500px;
-  //margin: 20px;
   background: #fafafa;
+}
+
+.due-date {
+  color: $success-color;
+}
+
+.due-date.error {
+  color: $error-color;
 }

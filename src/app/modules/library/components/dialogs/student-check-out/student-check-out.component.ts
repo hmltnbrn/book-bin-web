@@ -72,15 +72,14 @@ export class StudentCheckOutComponent {
       this.dateControl.setValue(<moment.Moment>(this.dateControl.value).add(14, 'd'));
     }
     else {
-      let newDate: moment.Moment = moment();
-      this.dateControl.setValue(moment([newDate.year(), newDate.month(), newDate.date()]).add(14, 'd'));
+      this.dateControl.setValue(moment().add(14, 'd'));
     }
   }
 
   checkOutBook(studentId: number) {
-    this.apiError = "";
     let dueDate: number;
-    if(this.dateControl.value) dueDate = moment.utc(<moment.Moment>(this.dateControl.value).toArray()).unix();
+    if(this.dateControl.value) dueDate = (<moment.Moment>this.dateControl.value).startOf('day').unix();
+    this.apiError = "";
     this.isLoading = true;
     this.bookService.CheckOutBook(this.bookId, studentId, dueDate).subscribe(
       data => {
