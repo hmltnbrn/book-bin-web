@@ -79,7 +79,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   formatDate(date) {
-    return date ? moment.unix(date).format('MMMM D, YYYY, h:mm:ss a') : '';
+    return date ? moment.unix(date).format('MMMM D, YYYY') : '';
   }
 
   dueDateStyle(date) {
