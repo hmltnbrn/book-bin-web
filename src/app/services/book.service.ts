@@ -38,7 +38,11 @@ export class BookService {
   }
 
   AddEditBook(book) {
-    return this.http.post(environment.api + '/api/Books/TeacherBooks', book);
+    return this.http.post(environment.api + '/api/Books/TeacherBooks', book).delay(1000);
+  }
+
+  DeleteBook(id: number) {
+    return this.http.delete(environment.api + '/api/Books/TeacherBooks/' + id).delay(1000);
   }
 
   GetStudentsWithBook(bookId) {

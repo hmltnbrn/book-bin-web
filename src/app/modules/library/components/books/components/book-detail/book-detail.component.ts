@@ -5,6 +5,8 @@ import { BookService } from '@services/book.service';
 import { MatChipInputEvent } from '@angular/material';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material';
+import { AlertDialogComponent } from '@modules/shared/components/dialogs/alert-dialog/alert-dialog.component';
 import * as moment from 'moment';
 
 @Component({
@@ -25,7 +27,9 @@ export class BookDetailComponent implements OnInit {
   currentColumns = ['name', 'checked_out', 'date_due'];
   historyColumns = ['name', 'checked_out', 'checked_in'];
 
-  constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService) { }
+  isLoading = false;
+
+  constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.data
@@ -91,14 +95,29 @@ export class BookDetailComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     console.log(this.bookForm.value);
     this.bookService.AddEditBook(this.bookForm.value).subscribe(
       data => {
         console.log(data);
+        this.isLoading = false;
+        this.alertDialog();
       },
       error => {
         console.log(error);
       });
+  }
+
+  alertDialog(): void {
+    let dialogRef = this.dialog.open(AlertDialogComponent, {
+      minWidth: '250px',
+      maxWidth: '550px',
+      width: '80vw',
+      data: { title: 'Update Book', message: 'Book has been updated.'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+    });
   }
 
 }
