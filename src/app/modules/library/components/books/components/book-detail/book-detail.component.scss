@@ -1,0 +1,72 @@
+.back-button-container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.back-button-text {
+  margin-left: 10px;
+  font-size: 19px;
+}
+
+.detail-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.form-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-container > *:not(h3) {
+  width: 80%;
+  max-width: 400px;
+  margin: 10px;
+}
+
+.form-container > h3 {
+  width: 80%;
+  max-width: 400px;
+}
+
+.level-container > * {
+  width: 50%;
+}
+
+.number-container > * {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0 0 0;
+}
+
+.button-container > :last-child {
+  margin-left: 10px;
+}
+
+.student-lists {
+  display: flex;
+  flex-direction: column;
+  //max-height: 500px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px;
+}
+
+.mat-table {
+  // overflow: auto;
+  // max-height: 500px;
+  //margin: 20px;
+  background: #fafafa;
+}

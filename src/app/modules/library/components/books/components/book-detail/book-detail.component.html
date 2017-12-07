@@ -1,3 +1,108 @@
-<p>
-  book-detail works!
-</p>
+<div class="back-button-container">
+  <a mat-fab color="primary" routerLink="../">
+    <mat-icon aria-label="Back button">arrow_back</mat-icon>
+  </a>
+  <span class="back-button-text">Back to Books</span>
+</div>
+<div class="detail-container">
+  <form id="book-detail-form" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="bookForm" novalidate>
+    <h3>Book Details</h3>
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title" required>
+      <mat-error *ngIf="bookForm.controls.title.invalid">{{getErrorMessage(bookForm.controls.title)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Author" formControlName="author" required>
+      <mat-error *ngIf="bookForm.controls.author.invalid">{{getErrorMessage(bookForm.controls.author)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput rows="3" placeholder="Description" formControlName="description"></textarea>
+      <mat-error *ngIf="bookForm.controls.description.invalid">{{getErrorMessage(bookForm.controls.description)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-chip-list #genreList>
+        <mat-chip *ngFor="let genre of bookForm.controls.genres['controls']" [selectable]="true"
+          [removable]="true" (remove)="removeGenre(genre)"
+        >
+          {{genre.value}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="Genres"
+          [matChipInputFor]="genreList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="true"
+          (matChipInputTokenEnd)="addGenre($event)"
+          required
+        >
+      </mat-chip-list>
+    </mat-form-field>
+    <div class="level-container">
+      <mat-form-field>
+        <input matInput placeholder="Reading Level" formControlName="reading_level" required>
+        <mat-error *ngIf="bookForm.controls.reading_level.invalid">{{getErrorMessage(bookForm.controls.reading_level)}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="number-container">
+      <mat-form-field>
+        <input matInput type="number" placeholder="Number Checked In" formControlName="number_in" required>
+        <mat-error *ngIf="bookForm.controls.number_in.invalid">{{getErrorMessage(bookForm.controls.number_in)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Number Checked Out" formControlName="number_out" required>
+        <mat-error *ngIf="bookForm.controls.number_out.invalid">{{getErrorMessage(bookForm.controls.number_out)}}</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-slide-toggle formControlName="available">Available</mat-slide-toggle>
+    <div class="button-container">
+      <button mat-raised-button type="button" (click)="resetForm()">Reset</button>
+      <button mat-raised-button type="submit" color="primary" [disabled]="bookForm.invalid">Submit</button>
+    </div>
+  </form>
+  <div class="student-lists">
+    <h3>Current Students</h3>
+    <ng-container *ngIf="studentCurrent.filteredData.length > 0">
+      <mat-table #table [dataSource]="studentCurrent">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="checked_out">
+          <mat-header-cell *matHeaderCellDef> Checked Out </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{formatDate(element.date_out)}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="date_due">
+          <mat-header-cell *matHeaderCellDef> Due Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{formatDate(element.date_due)}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="currentColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: currentColumns;"></mat-row>
+      </mat-table>
+    </ng-container>
+    <ng-container *ngIf="studentCurrent.filteredData.length == 0">
+      <p>No Students</p>
+    </ng-container>
+    <h3>Student History</h3>
+    <ng-container *ngIf="studentHistory.filteredData.length > 0">
+      <mat-table #table [dataSource]="studentHistory">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="checked_out">
+          <mat-header-cell *matHeaderCellDef> Checked Out </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{formatDate(element.date_out)}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="checked_in">
+          <mat-header-cell *matHeaderCellDef> Checked In </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{formatDate(element.date_in)}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="historyColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: historyColumns;"></mat-row>
+      </mat-table>
+    </ng-container>
+    <ng-container *ngIf="studentHistory.filteredData.length == 0">
+      <p>No Students</p>
+    </ng-container>
+  </div>
+</div>

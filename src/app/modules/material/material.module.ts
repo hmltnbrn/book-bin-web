@@ -19,6 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { A11yModule } from '@angular/cdk/a11y';
 
 @NgModule({
@@ -44,7 +46,9 @@ import { A11yModule } from '@angular/cdk/a11y';
     MatDatepickerModule,
     MatMomentDateModule,
     A11yModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatButtonModule,
@@ -68,7 +72,9 @@ import { A11yModule } from '@angular/cdk/a11y';
     MatDatepickerModule,
     MatMomentDateModule,
     A11yModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule { }

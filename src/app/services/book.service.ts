@@ -33,6 +33,14 @@ export class BookService {
     });
   }
 
+  GetTeacherBook(id: number) {
+    return this.http.get(environment.api + '/api/Books/TeacherBooks/' + id);
+  }
+
+  AddEditBook(book) {
+    return this.http.post(environment.api + '/api/Books/TeacherBooks', book);
+  }
+
   GetStudentsWithBook(bookId) {
     let params = new HttpParams();
     params = params.append('book_id', bookId);

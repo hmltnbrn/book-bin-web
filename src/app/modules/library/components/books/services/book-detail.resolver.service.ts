@@ -12,7 +12,7 @@ export class BookDetailResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     let id = +route.paramMap.get('id');
 
-    return this.bookService.GetBook(id).catch(err => {
+    return this.bookService.GetTeacherBook(id).catch(err => {
       return Observable.of(err.error);
     });
   }
