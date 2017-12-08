@@ -30,12 +30,12 @@
     </button>
     <mat-menu #menu="matMenu">
       <a mat-menu-item [routerLink]="['/library/books/' + book.id]">View and Edit</a>
-      <a mat-menu-item [routerLink]="['/library/books/' + book.id]">Remove</a>
+      <a mat-menu-item (click)="deleteDialog(book.id, book.title, book.number_out)">Remove</a>
     </mat-menu>
   </div>
 </div>
 <app-paginator
-  [totalItems]="booksData.totalItems"
+  [totalItems]="totalItems"
   [pageSize]="booksData.pageSize"
   [pageTotal]="booksData.pageTotal"
   [pageUrl]="'/library/books'"

@@ -3,8 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BookService } from '@services/book.service';
 import { MatDialog } from '@angular/material';
+import { AlertDialogComponent } from '@modules/shared/components/dialogs/alert-dialog/alert-dialog.component';
+import { ConfirmDialogComponent } from '@modules/shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 import { StudentCheckOutComponent } from '@modules/library/components/dialogs/student-check-out/student-check-out.component';
 import { StudentCheckInComponent } from '@modules/library/components/dialogs/student-check-in/student-check-in.component';
+import { BookDeleteComponent } from '@modules/library/components/dialogs/book-delete/book-delete.component';
 import { ReadingLevels } from '@global/reading-levels.global';
 import { MultipleResponseModel } from '@models/multiple-response.model';
 
@@ -18,6 +21,7 @@ export class BookListComponent implements OnInit {
 
   booksData: MultipleResponseModel;
   studentsData: any;
+  totalItems: number;
 
   constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService, private dialog: MatDialog, private readingLevels: ReadingLevels) { }
 
@@ -28,6 +32,7 @@ export class BookListComponent implements OnInit {
         console.log(data.students)
         this.booksData = data.books;
         this.studentsData = data.students;
+        this.totalItems = data.books["totalItems"];
       });
   }
 
@@ -59,6 +64,20 @@ export class BookListComponent implements OnInit {
     });
   }
 
+  deleteDialog(id, title, numberOut) {
+    let dialogRef = this.dialog.open(BookDeleteComponent, {
+      minWidth: '250px',
+      maxWidth: '550px',
+      width: '80vw',
+      disableClose: true,
+      data: { title: title, bookId: id, numberOut: numberOut }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+      if(result) this.removeFromData(id);
+    });
+  }
+
   reduceCount(book_id) {
     for(var i=0; i<this.booksData.result.length; i++) {
       if(this.booksData.result[i].id == book_id) {
@@ -77,6 +96,16 @@ export class BookListComponent implements OnInit {
         break;
       }
     }
+  }
+
+  removeFromData(id) {
+    for(var i=0; i<this.booksData.result.length; i++) {
+      if(this.booksData.result[i].id == id) {
+        this.booksData.result.splice(i, 1);
+        break;
+      }
+    }
+    this.totalItems--;
   }
 
 }

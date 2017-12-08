@@ -24,7 +24,7 @@
   </ng-container>
 </mat-dialog-content>
 <mat-dialog-actions class="dialog-actions" *ngIf="!isLoading">
-  <button mat-button (click)="onCancel()" *ngIf="!isSubmitted" cdkFocusInitial>{{data.cancelButton || 'Cancel'}}</button>
+  <button mat-button *ngIf="!isSubmitted" [mat-dialog-close]="false" cdkFocusInitial>{{data.cancelButton || 'Cancel'}}</button>
   <button mat-button (click)="onSubmit()" [disabled]="!studentControl.valid" *ngIf="!isSubmitted">{{data.okButton || 'Check In'}}</button>
-  <button mat-button (click)="onOk()" *ngIf="isSubmitted">{{data.okButton || 'OK'}}</button>
+  <button mat-button *ngIf="isSubmitted" [mat-dialog-close]="true">{{data.okButton || 'OK'}}</button>
 </mat-dialog-actions>

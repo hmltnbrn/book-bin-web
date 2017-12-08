@@ -21,22 +21,22 @@
       <mat-error *ngIf="bookForm.controls.description.invalid">{{getErrorMessage(bookForm.controls.description)}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-chip-list #genreList>
+      <mat-chip-list #genreList [formControl]="genreControl" required>
         <mat-chip *ngFor="let genre of bookForm.controls.genres['controls']" [selectable]="true"
           [removable]="true" (remove)="removeGenre(genre)"
         >
           {{genre.value}}
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
-        <input
-          placeholder="Genres"
-          [matChipInputFor]="genreList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          [matChipInputAddOnBlur]="true"
-          (matChipInputTokenEnd)="addGenre($event)"
-          required
-        >
       </mat-chip-list>
+      <input
+        placeholder="Genres"
+        [matChipInputFor]="genreList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="true"
+        (matChipInputTokenEnd)="addGenre($event)"
+      >
+      <mat-error *ngIf="bookForm.controls.genres.invalid">{{getErrorMessage(bookForm.controls.genres)}}</mat-error>
     </mat-form-field>
     <div class="level-container">
       <mat-form-field>

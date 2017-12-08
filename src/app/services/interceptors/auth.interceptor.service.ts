@@ -27,6 +27,10 @@ export class AuthInterceptor implements HttpInterceptor {
           console.log(err)
           this.router.navigate(['/signout'], { queryParams: { redirectFor: err.error.message } });
         }
+        if (err.status === 404) {
+          console.log(err)
+          this.router.navigate(['/404'], { skipLocationChange: true });
+        }
         if (err.status === 500) {
           console.log(err)
           this.router.navigate(['/500'], { skipLocationChange: true });

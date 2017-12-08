@@ -100,16 +100,8 @@ export class StudentCheckInComponent {
     else this.apiError = error.error.message;
   }
 
-  onCancel(): void {
-    this.dialogRef.close(false);
-  }
-
-  onSubmit(): void {
+  onSubmit() {
     this.checkInBook(this.studentControl.value.id);
-  }
-
-  onOk(): void {
-    this.dialogRef.close(true);
   }
 
 }

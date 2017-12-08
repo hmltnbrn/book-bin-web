@@ -17,6 +17,8 @@ import * as moment from 'moment';
 })
 export class BookDetailComponent implements OnInit {
 
+  genreControl: FormControl = new FormControl('', Validators.required);
+
   separatorKeysCodes = [ENTER, COMMA];
 
   bookForm: FormGroup;
@@ -54,18 +56,20 @@ export class BookDetailComponent implements OnInit {
       number_out: new FormControl(book.number_out, Validators.required),
       available: new FormControl(book.available)
     });
+    this.genreControl.setValue('a'.repeat(book.genres.length));
   }
 
   getErrorMessage(control: FormControl) {
     return control.hasError('required') ? 'You must enter a value' : '';
   }
 
-  addGenre(event: MatChipInputEvent): void {
+  addGenre(event: MatChipInputEvent) {
     let input = event.input;
     let value = event.value;
 
     if ((value || '').trim()) {
       (<FormArray>this.bookForm.controls.genres).push(new FormControl(value.trim()));
+      this.genreControl.setValue(this.genreControl.value + 'a');
     }
 
     if (input) {
@@ -73,12 +77,13 @@ export class BookDetailComponent implements OnInit {
     }
   }
 
-  removeGenre(genre: any): void {
+  removeGenre(genre: any) {
     let control = (<FormArray>this.bookForm.controls.genres);
     let index = control.controls.indexOf(genre);
 
     if (index >= 0) {
       control.removeAt(index);
+      this.genreControl.setValue(this.genreControl.value.slice(0, -1));
     }
   }
 
@@ -108,7 +113,7 @@ export class BookDetailComponent implements OnInit {
       });
   }
 
-  alertDialog(): void {
+  alertDialog() {
     let dialogRef = this.dialog.open(AlertDialogComponent, {
       minWidth: '250px',
       maxWidth: '550px',

@@ -13,6 +13,7 @@ import { StudentCheckOutComponent } from './components/dialogs/student-check-out
 import { StudentCheckInComponent } from './components/dialogs/student-check-in/student-check-in.component';
 import { BookListComponent } from './components/books/components/book-list/book-list.component';
 import { BookDetailComponent } from './components/books/components/book-detail/book-detail.component';
+import { BookDeleteComponent } from './components/dialogs/book-delete/book-delete.component';
 
 @NgModule({
   imports: [
@@ -27,11 +28,13 @@ import { BookDetailComponent } from './components/books/components/book-detail/b
     StudentCheckOutComponent,
     StudentCheckInComponent,
     BookListComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    BookDeleteComponent
   ],
   entryComponents: [
     StudentCheckOutComponent,
-    StudentCheckInComponent
+    StudentCheckInComponent,
+    BookDeleteComponent
   ],
   providers: [
     BookService,
