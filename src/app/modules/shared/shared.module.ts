@@ -11,6 +11,8 @@ import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-di
 import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
 import { ErrorIndicatorComponent } from './components/error-indicator/error-indicator.component';
 import { SuccessIndicatorComponent } from './components/success-indicator/success-indicator.component';
+import { SuccessDialogComponent } from './components/dialogs/success-dialog/success-dialog.component';
+import { ErrorDialogComponent } from './components/dialogs/error-dialog/error-dialog.component';
 
 @NgModule({
   imports: [
@@ -26,11 +28,15 @@ import { SuccessIndicatorComponent } from './components/success-indicator/succes
     AlertDialogComponent,
     ConfirmDialogComponent,
     ErrorIndicatorComponent,
-    SuccessIndicatorComponent
+    SuccessIndicatorComponent,
+    SuccessDialogComponent,
+    ErrorDialogComponent
   ],
   entryComponents: [
     AlertDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    SuccessDialogComponent,
+    ErrorDialogComponent
   ],
   exports: [
     CommonModule,

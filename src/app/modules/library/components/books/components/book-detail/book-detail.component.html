@@ -5,6 +5,7 @@
   </a>
   <span class="back-button-text">Back to Books</span>
 </div>
+<app-error-indicator [errorText]="formError"></app-error-indicator>
 <div class="detail-container">
   <form id="book-detail-form" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="bookForm" novalidate>
     <h3>Book Details</h3>
@@ -38,20 +39,14 @@
       >
       <mat-error *ngIf="bookForm.controls.genres.invalid">{{getErrorMessage(bookForm.controls.genres)}}</mat-error>
     </mat-form-field>
-    <div class="level-container">
+    <div class="small-form-container">
       <mat-form-field>
         <input matInput placeholder="Reading Level" formControlName="reading_level" required>
         <mat-error *ngIf="bookForm.controls.reading_level.invalid">{{getErrorMessage(bookForm.controls.reading_level)}}</mat-error>
       </mat-form-field>
-    </div>
-    <div class="number-container">
       <mat-form-field>
-        <input matInput type="number" placeholder="Number Checked In" formControlName="number_in" required>
-        <mat-error *ngIf="bookForm.controls.number_in.invalid">{{getErrorMessage(bookForm.controls.number_in)}}</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="number" placeholder="Number Checked Out" formControlName="number_out" required>
-        <mat-error *ngIf="bookForm.controls.number_out.invalid">{{getErrorMessage(bookForm.controls.number_out)}}</mat-error>
+        <input matInput type="number" placeholder="Book Total" formControlName="total" required>
+        <mat-error *ngIf="bookForm.controls.total.invalid">{{getErrorMessage(bookForm.controls.total)}}</mat-error>
       </mat-form-field>
     </div>
     <mat-slide-toggle formControlName="available">Available</mat-slide-toggle>
@@ -61,8 +56,19 @@
     </div>
   </form>
   <div class="student-lists">
-    <h3>Current Students</h3>
+    <div class="current-header">
+      <h3>Current Students</h3>
+      <div class="key-container">
+        <div class="key-box success"></div>
+        <span>On Time</span>
+      </div>
+      <div class="key-container">
+        <div class="key-box error"></div>
+        <span>Overdue</span>
+      </div>
+    </div>
     <ng-container *ngIf="studentCurrent.filteredData.length > 0">
+      <p class="students-info">Select students below to check their books in. You may select more than one.</p>
       <mat-table #table [dataSource]="studentCurrent">
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -77,8 +83,11 @@
           <mat-cell *matCellDef="let element" class="due-date" [class.error]="dueDateStyle(element.date_due)"> {{formatDate(element.date_due)}} </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="currentColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: currentColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: currentColumns;" class="clickable-row" (click)="onRowClick(row.student_id)" [class.selected]="checkRow(row.student_id)"></mat-row>
       </mat-table>
+      <div class="button-container">
+        <button mat-raised-button type="button" color="primary" [disabled]="studentsCheckIn.length == 0 || isLoading" (click)="checkInBooks()">Check In</button>
+      </div>
     </ng-container>
     <ng-container *ngIf="studentCurrent.filteredData.length == 0">
       <p>No Students</p>

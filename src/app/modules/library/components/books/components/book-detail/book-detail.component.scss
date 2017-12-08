@@ -23,26 +23,23 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
 }
 
 .form-container > *:not(h3) {
   width: 80%;
-  max-width: 400px;
+  max-width: 450px;
   margin: 10px;
 }
 
 .form-container > h3 {
   width: 80%;
-  max-width: 400px;
+  max-width: 450px;
 }
 
-.level-container > * {
+.small-form-container > * {
   width: 50%;
-}
-
-.number-container > * {
-  width: 50%;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
 }
@@ -75,4 +72,61 @@
 
 .due-date.error {
   color: $error-color;
+}
+
+.current-header {
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  h3 {
+    margin: 0 10px 0 0;
+  }
+
+  span {
+    margin-right: 10px;
+    line-height: normal;
+  }
+
+}
+
+.key-container {
+  display: flex;
+  align-items: center;
+}
+
+.key-box {
+  width: 1em;
+  height: 1em;
+  margin: 0 10px 0 0;
+
+  &.success {
+    background: $success-color;
+  }
+  &.error {
+    background: $error-color;
+  }
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.selected {
+  background: #E0E0E0;
+}
+
+.students-info {
+  font-size: 14px;
+}
+
+@media (max-width: 450px) {
+  .current-header {
+    flex-direction: column;
+    align-items: normal;
+  }
+  .key-container {
+    margin: 5px 0;
+  }
 }

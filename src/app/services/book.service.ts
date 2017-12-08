@@ -63,4 +63,9 @@ export class BookService {
     return this.http.post(environment.api + '/api/Books/CheckIn', body).delay(1000);
   }
 
+  CheckInBookForSudents(id, students) {
+    let body = { book_id: id, students: students };
+    return this.http.post(environment.api + '/api/Books/CheckIn/Students', body).delay(1000);
+  }
+
 }
