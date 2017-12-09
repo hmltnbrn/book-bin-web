@@ -1,9 +1,12 @@
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
-<div class="back-button-container">
-  <a mat-fab color="primary" routerLink="../">
-    <mat-icon aria-label="Back button">arrow_back</mat-icon>
-  </a>
-  <span class="back-button-text">Back to Books</span>
+<div class="detail-header">
+  <div class="back-button-container">
+    <a mat-fab color="primary" routerLink="../">
+      <mat-icon aria-label="Back button">arrow_back</mat-icon>
+    </a>
+    <span class="back-button-text">Back to Books</span>
+  </div>
+  <h2>{{bookData['title']}}</h2>
 </div>
 <app-error-indicator [errorText]="formError"></app-error-indicator>
 <div class="detail-container">
