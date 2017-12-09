@@ -1,3 +1,4 @@
+<app-header [username]="username" (toggleSide)="sidenav.toggle()" (closeSide)="sidenav.close()"></app-header>
 <mat-sidenav-container class="sidenav-container" fullscreen>
   <mat-sidenav #sidenav class="sidenav-window">
     <h2 class="sidenav-title">My Library</h2>
@@ -9,7 +10,6 @@
       <mat-list-item [routerLink]="['/library/students']" (click)="sidenav.close()">All Students</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <app-header [username]="username" (toggleSide)="sidenav.toggle()" (closeSide)="sidenav.close()"></app-header>
   <div class="wrapper">
     <main>
       <router-outlet></router-outlet>
