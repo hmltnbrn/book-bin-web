@@ -1,0 +1,15 @@
+@import '~sass/variables';
+
+.warning-container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: $warning-color;
+  line-height: normal;
+  width: 300px;
+  max-width: 100%;
+}
+
+.warning-icon {
+  margin: 0 10px 0 0;
+}

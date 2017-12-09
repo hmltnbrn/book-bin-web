@@ -3,7 +3,7 @@
 <mat-dialog-content *ngIf="!isLoading">
   <ng-container *ngIf="!isDeleted">
     <app-error-indicator [errorText]="apiError"></app-error-indicator>
-    <app-error-indicator [errorText]="'Book currently checked out'" *ngIf="data.numberOut > 0"></app-error-indicator>
+    <app-warning-indicator [warningText]="'Book currently checked out'" *ngIf="data.numberOut > 0"></app-warning-indicator>
     <p>Are you sure you want to remove this book from your library?</p>
   </ng-container>
   <ng-container *ngIf="isDeleted">
@@ -12,6 +12,6 @@
 </mat-dialog-content>
 <mat-dialog-actions class="dialog-actions" *ngIf="!isLoading">
   <button mat-button *ngIf="!isDeleted" [mat-dialog-close]="false" cdkFocusInitial>{{data.cancelButton || 'Cancel'}}</button>
-  <button mat-button (click)="onSubmit()" *ngIf="!isDeleted">{{data.okButton || 'Remove'}}</button>
+  <button mat-button (click)="onSubmit()" *ngIf="!isDeleted" [disabled]="data.numberOut > 0">{{data.okButton || 'Remove'}}</button>
   <button mat-button *ngIf="isDeleted" [mat-dialog-close]="true">{{data.okButton || 'OK'}}</button>
 </mat-dialog-actions>

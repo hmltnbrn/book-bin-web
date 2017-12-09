@@ -47,6 +47,8 @@
       <mat-form-field>
         <input matInput type="number" placeholder="Book Total" formControlName="total" required>
         <mat-error *ngIf="bookForm.controls.total.invalid">{{getErrorMessage(bookForm.controls.total)}}</mat-error>
+        <mat-hint>{{bookForm.controls.number_in.value + (bookForm.controls.number_in.value == 1 ? ' book' : ' books')}} checked in</mat-hint>
+        <mat-hint align="end">{{bookForm.controls.number_out.value + (bookForm.controls.number_out.value == 1 ? ' book' : ' books')}} checked out</mat-hint>
       </mat-form-field>
     </div>
     <mat-slide-toggle formControlName="available">Available</mat-slide-toggle>

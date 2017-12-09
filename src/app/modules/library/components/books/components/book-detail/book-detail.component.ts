@@ -62,7 +62,7 @@ export class BookDetailComponent implements OnInit {
       reading_level: new FormControl(book.reading_level, Validators.required),
       number_in: new FormControl(book.number_in, Validators.required),
       number_out: new FormControl(book.number_out, Validators.required),
-      total: new FormControl(book.number_in + book.number_out, Validators.required),
+      total: new FormControl(book.number_in + book.number_out, [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]),
       available: new FormControl(book.available)
     }, BookTotalValidator.CheckTotal);
     this.genreControl.setValue('a'.repeat(book.genres.length));
@@ -72,8 +72,14 @@ export class BookDetailComponent implements OnInit {
     if(control.hasError('required')) {
       return 'You must enter a value'
     }
-    else if (control.hasError('checkTotal')) {
-      return 'Value too low. Check in books before changing this.'
+    else if (control.hasError('lowTotal')) {
+      return 'Value cannot be less than the number of books checked out.'
+    }
+    else if (control.hasError('zeroTotal')) {
+      return 'Value cannot be zero or negative. Consider making this book unavailable.'
+    }
+    else if (control.hasError('pattern')) {
+      return 'Invalid input'
     }
     else {
       return '';
@@ -130,6 +136,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     this.bookForm.controls.number_in.setValue(this.newNumberIn());
     let finalValues = this.bookForm.value;
     delete finalValues.total;
@@ -179,11 +186,12 @@ export class BookDetailComponent implements OnInit {
     this.bookService.CheckInBookForSudents(this.bookData["id"], this.studentsCheckIn).subscribe(
       data => {
         console.log(data);
-        this.isLoading = false;
         this.bookData = data["book"];
         this.studentCurrent = new MatTableDataSource<Element>(data["studentCurrent"]);
         this.studentHistory = new MatTableDataSource<Element>(data["studentHistory"]);
         this.studentsCheckIn = [];
+        this.createForm(data["book"]);
+        this.isLoading = false;
       },
       error => {
         console.log(error);
