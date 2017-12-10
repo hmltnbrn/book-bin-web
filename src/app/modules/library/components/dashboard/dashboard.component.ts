@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '@services/book.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  providers: [BookService]
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private bookService: BookService) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.route.data
+      .subscribe((data: { dashboard: any }) => {
+        console.log(data.dashboard);
+      });
   }
 
 }

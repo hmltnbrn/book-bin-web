@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@services/guards/auth.guard.service';
 import { CanDeactivateGuard } from '@services/guards/can-deactivate.guard.service';
 
+import { DashboardResolver } from './components/books/services/dashboard.resolver.service';
 import { AllBooksResolver } from './components/books/services/all-books.resolver.service';
 import { BookDetailResolver } from './components/books/services/book-detail.resolver.service';
 import { AllActiveStudentsResolver } from './components/books/services/active-students.resolver.service';
@@ -15,7 +16,7 @@ import { BookListComponent } from './components/books/components/book-list/book-
 import { BookDetailComponent } from './components/books/components/book-detail/book-detail.component';
 
 const routes: Routes = [
-  { 
+  {
     path: '',
     component: LibraryComponent,
     canActivate: [AuthGuard],
@@ -50,7 +51,10 @@ const routes: Routes = [
           },
           {
             path: 'dashboard',
-            component: DashboardComponent
+            component: DashboardComponent,
+            resolve: {
+              dashboard: DashboardResolver
+            }
           }
         ]
       }
@@ -62,6 +66,7 @@ const routes: Routes = [
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ],
   providers: [
+    DashboardResolver,
     AllBooksResolver,
     BookDetailResolver,
     AllActiveStudentsResolver

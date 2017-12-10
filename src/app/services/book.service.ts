@@ -68,4 +68,8 @@ export class BookService {
     return this.http.post(environment.api + '/api/Books/CheckIn/Students', body).delay(1000);
   }
 
+  GetDashboard() {
+    return this.http.get(environment.api + '/api/Books/Dashboard');
+  }
+
 }
