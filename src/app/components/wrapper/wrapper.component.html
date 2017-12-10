@@ -4,10 +4,11 @@
     <h2 class="sidenav-title">My Library</h2>
     <mat-nav-list>
       <h3 mat-subheader>Books</h3>
-      <mat-list-item [routerLink]="['/library/books']" (click)="sidenav.close()">All Books</mat-list-item>
+      <mat-list-item [routerLink]="['/library/books']" (click)="sidenav.close()">My Books</mat-list-item>
       <mat-list-item [routerLink]="['/library/checkedout']" (click)="sidenav.close()">Checked Out Books</mat-list-item>
       <h3 mat-subheader>Students</h3>
-      <mat-list-item [routerLink]="['/library/students']" (click)="sidenav.close()">All Students</mat-list-item>
+      <mat-list-item [routerLink]="['/library/students']" (click)="sidenav.close()">Students</mat-list-item>
+      <mat-list-item [routerLink]="['/library/classes']" (click)="sidenav.close()">Classes</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <div class="wrapper">

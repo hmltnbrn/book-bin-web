@@ -4,7 +4,7 @@
     <a mat-fab color="primary" routerLink="../">
       <mat-icon aria-label="Back button">arrow_back</mat-icon>
     </a>
-    <span class="back-button-text">Back to Books</span>
+    <span class="back-button-text">To Books List</span>
   </div>
   <h2>{{bookData['title']}}</h2>
 </div>
@@ -95,7 +95,7 @@
       </div>
     </ng-container>
     <ng-container *ngIf="studentCurrent.filteredData.length == 0">
-      <p>No Students</p>
+      <app-info-indicator [infoText]="'No Students'"></app-info-indicator>
     </ng-container>
     <h3>Student History</h3>
     <ng-container *ngIf="studentHistory.filteredData.length > 0">
@@ -117,7 +117,7 @@
       </mat-table>
     </ng-container>
     <ng-container *ngIf="studentHistory.filteredData.length == 0">
-      <p>No Students</p>
+      <app-info-indicator [infoText]="'No Students'"></app-info-indicator>
     </ng-container>
   </div>
 </div>

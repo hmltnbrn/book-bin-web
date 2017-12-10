@@ -29,8 +29,14 @@
       <mat-icon aria-label="More options">more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <a mat-menu-item [routerLink]="['/library/books/' + book.id]">View and Edit</a>
-      <a mat-menu-item (click)="deleteDialog(book.id, book.title, book.number_out)">Remove</a>
+      <button mat-menu-item [routerLink]="['/library/books/' + book.id]">
+        <mat-icon>edit</mat-icon>
+        <span>View and Edit</span>
+      </button>
+      <button mat-menu-item (click)="deleteDialog(book.id, book.title, book.number_out)">
+        <mat-icon>delete</mat-icon>
+        <span>Remove</span>
+      </button>
     </mat-menu>
   </div>
 </div>

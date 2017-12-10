@@ -14,6 +14,7 @@ import { SuccessIndicatorComponent } from './components/success-indicator/succes
 import { SuccessDialogComponent } from './components/dialogs/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './components/dialogs/error-dialog/error-dialog.component';
 import { WarningIndicatorComponent } from './components/warning-indicator/warning-indicator.component';
+import { InfoIndicatorComponent } from './components/info-indicator/info-indicator.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { WarningIndicatorComponent } from './components/warning-indicator/warnin
     SuccessIndicatorComponent,
     SuccessDialogComponent,
     ErrorDialogComponent,
-    WarningIndicatorComponent
+    WarningIndicatorComponent,
+    InfoIndicatorComponent
   ],
   entryComponents: [
     AlertDialogComponent,
@@ -50,7 +52,8 @@ import { WarningIndicatorComponent } from './components/warning-indicator/warnin
     SearchComponent,
     ErrorIndicatorComponent,
     SuccessIndicatorComponent,
-    WarningIndicatorComponent
+    WarningIndicatorComponent,
+    InfoIndicatorComponent
   ]
 })
 export class SharedModule { }

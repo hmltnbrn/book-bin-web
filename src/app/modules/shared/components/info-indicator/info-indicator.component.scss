@@ -1,0 +1,15 @@
+@import '~sass/variables';
+
+.info-container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: $info-color;
+  line-height: normal;
+  width: 300px;
+  max-width: 100%;
+}
+
+.info-icon {
+  margin: 0 10px 0 0;
+}

@@ -1,0 +1,27 @@
+@import '~sass/variables';
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.dashboard-container > * {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px;
+}
+
+.mat-table {
+  background: #fafafa;
+}
+
+.from-date {
+  font-size: 11px;
+}
+
+@media(max-width: 450px) {
+  .center-cell {
+    text-align: center;
+  }
+}

@@ -48,3 +48,8 @@ main {
 .dialog-actions {
   justify-content: flex-end;
 }
+
+a.router-link {
+  color: $primary-color;
+  text-decoration: none;
+}

@@ -24,13 +24,12 @@ export class BookDetailComponent implements OnInit {
 
   genreControl: FormControl = new FormControl('', Validators.required);
 
-  separatorKeysCodes = [ENTER, COMMA];
-
   bookForm: FormGroup;
   bookData: object;
-  studentCurrent;
-  studentHistory;
+  studentCurrent: MatTableDataSource<Element>;
+  studentHistory: MatTableDataSource<Element>;
 
+  separatorKeysCodes = [ENTER, COMMA];
   currentColumns = ['name', 'checked_out', 'date_due'];
   historyColumns = ['name', 'checked_out', 'checked_in'];
 
@@ -46,8 +45,8 @@ export class BookDetailComponent implements OnInit {
       .subscribe((data: { book: any }) => {
         console.log(data.book);
         this.bookData = data.book["book"];
-        this.studentCurrent = new MatTableDataSource<Element>(data.book["studentCurrent"]);
-        this.studentHistory = new MatTableDataSource<Element>(data.book["studentHistory"]);
+        this.studentCurrent = new MatTableDataSource<Element>(data.book["student_current"]);
+        this.studentHistory = new MatTableDataSource<Element>(data.book["student_history"]);
         this.createForm(data.book["book"]);
       });
   }
@@ -187,8 +186,8 @@ export class BookDetailComponent implements OnInit {
       data => {
         console.log(data);
         this.bookData = data["book"];
-        this.studentCurrent = new MatTableDataSource<Element>(data["studentCurrent"]);
-        this.studentHistory = new MatTableDataSource<Element>(data["studentHistory"]);
+        this.studentCurrent = new MatTableDataSource<Element>(data["student_current"]);
+        this.studentHistory = new MatTableDataSource<Element>(data["student_history"]);
         this.studentsCheckIn = [];
         this.createForm(data["book"]);
         this.isLoading = false;

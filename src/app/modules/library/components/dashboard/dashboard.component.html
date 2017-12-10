@@ -1,3 +1,78 @@
-<p>
-  dashboard works!
-</p>
+<div class="dashboard-container">
+  <div class="dashboard-component">
+    <h3>Top Ten Books</h3>
+    <ng-container *ngIf="topBooks.filteredData.length > 0">
+      <mat-table #table [dataSource]="topBooks">
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <a class="router-link" [routerLink]="['/library/books', element.id]">{{element.title}}</a> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="author">
+          <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="times_out">
+          <mat-header-cell *matHeaderCellDef class="center-cell"> Times Out </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="center-cell"> {{element.check_out_total}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="topBooksColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: topBooksColumns;"></mat-row>
+      </mat-table>
+    </ng-container>
+    <ng-container *ngIf="topBooks.filteredData.length == 0">
+      <app-info-indicator [infoText]="'No books checked out yet'"></app-info-indicator>
+    </ng-container>
+  </div>
+  <div class="dashboard-component">
+    <h3>Top Ten Readers</h3>
+    <ng-container *ngIf="topReaders.filteredData.length > 0">
+      <mat-table #table [dataSource]="topReaders">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+            <a class="router-link" [routerLink]="['/library/students', element.id]">{{element.first_name}} {{element.last_name}}</a> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="books_read">
+          <mat-header-cell *matHeaderCellDef> Books Read </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.books_read}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="topReadersColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: topReadersColumns;"></mat-row>
+      </mat-table>
+    </ng-container>
+    <ng-container *ngIf="topReaders.filteredData.length == 0">
+      <app-info-indicator [infoText]="'No books checked in yet'"></app-info-indicator>
+    </ng-container>
+  </div>
+  <div class="dashboard-component">
+    <h3>Overdue Books</h3>
+    <ng-container *ngIf="overdueBooks.filteredData.length > 0">
+      <mat-table #table [dataSource]="overdueBooks">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+            <a class="router-link" [routerLink]="['/library/students', element.student_id]">{{element.first_name}} {{element.last_name}}</a> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <a class="router-link" [routerLink]="['/library/books', element.book_id]">{{element.title}}</a> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="due_date">
+          <mat-header-cell *matHeaderCellDef> Due Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{formatDate(element.date_due)}}<br/><div class="from-date">{{formatFromDate(element.date_due)}}</div> </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="overdueBooksColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: overdueBooksColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator
+        #overduePaginator
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20]"
+      >
+      </mat-paginator>
+    </ng-container>
+    <ng-container *ngIf="overdueBooks.filteredData.length == 0">
+      <app-info-indicator [infoText]="'No books overdue'"></app-info-indicator>
+    </ng-container>
+  </div>
+</div>
