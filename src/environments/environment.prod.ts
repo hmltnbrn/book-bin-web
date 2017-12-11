@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: "http://libraryapi.brianhamilton.me"
+  api: "http://api.library.brianhamilton.me"
 };
