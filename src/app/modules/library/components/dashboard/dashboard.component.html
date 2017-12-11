@@ -5,7 +5,7 @@
       <mat-table #table [dataSource]="topBooks">
         <ng-container matColumnDef="title">
           <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-          <mat-cell *matCellDef="let element"> <a class="router-link" [routerLink]="['/library/books', element.id]">{{element.title}}</a> </mat-cell>
+          <mat-cell *matCellDef="let element"> <a class="router-link" [routerLink]="['/library/books', element.book_id]">{{element.title}}</a> </mat-cell>
         </ng-container>
         <ng-container matColumnDef="author">
           <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
@@ -30,7 +30,7 @@
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
           <mat-cell *matCellDef="let element"> 
-            <a class="router-link" [routerLink]="['/library/students', element.id]">{{element.first_name}} {{element.last_name}}</a> </mat-cell>
+            <a class="router-link" [routerLink]="['/library/students', element.student_id]">{{element.first_name}} {{element.last_name}} ({{element.class_name}})</a> </mat-cell>
         </ng-container>
         <ng-container matColumnDef="books_read">
           <mat-header-cell *matHeaderCellDef> Books Read </mat-header-cell>
