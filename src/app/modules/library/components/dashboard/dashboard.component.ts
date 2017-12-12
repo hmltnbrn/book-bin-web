@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
   formatFromDate(date) {
-    return date ? moment.unix(date).fromNow(true) : '';
+    return date ? moment.unix(date).fromNow() : '';
   }
 
 }

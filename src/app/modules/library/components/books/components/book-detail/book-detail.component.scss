@@ -126,6 +126,7 @@
 
 .clickable-row {
   cursor: pointer;
+  transition: background .4s cubic-bezier(.25,.8,.25,1);
 }
 
 .selected {
