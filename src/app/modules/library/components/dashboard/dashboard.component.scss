@@ -24,6 +24,47 @@
   font-size: 11px;
 }
 
+.recent-activity {
+}
+
+.recent-activity > div {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.activity-text {
+  display: flex;
+  align-items: center;
+}
+
+span.activity-title {
+  font-size: 18px;
+}
+
+span.activity-action {
+  font-size: 12px;
+}
+
+.activity-date {
+  margin-left: auto;
+  font-size: 13px;
+  opacity: .7;
+}
+
+.activity-icon {
+  margin-right: 5px;
+}
+
+.out {
+  color: $error-color;
+}
+
+.in {
+  color: $success-color;
+}
+
 @media(max-width: 450px) {
   .center-cell {
     text-align: center;

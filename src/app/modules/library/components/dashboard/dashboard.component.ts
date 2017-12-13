@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   topBooks: MatTableDataSource<Element>;
   topReaders: MatTableDataSource<Element>;
   overdueBooks: MatTableDataSource<Element>;
+  recentActivity;
 
   separatorKeysCodes = [ENTER, COMMA];
   topBooksColumns = ['title', 'author', 'times_out'];
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
         this.topBooks = new MatTableDataSource<Element>(data.dashboard["top_books"]);
         this.topReaders = new MatTableDataSource<Element>(data.dashboard["top_readers"]);
         this.overdueBooks = new MatTableDataSource<Element>(data.dashboard["overdue_books"]);
+        this.recentActivity = data.dashboard["recent_activity"];
       });
   }
 
@@ -40,6 +42,10 @@ export class DashboardComponent implements OnInit {
 
   formatDate(date) {
     return date ? moment.unix(date).format('MMMM D, YYYY') : '';
+  }
+
+  formatDateTime(date) {
+    return date ? moment.unix(date).format('MMMM D, YYYY h:mm a') : '';
   }
 
   formatFromDate(date) {

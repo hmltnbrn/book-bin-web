@@ -1,5 +1,25 @@
 <div class="dashboard-container">
   <div class="dashboard-left">
+    <div class="recent-activity">
+      <h3>Recent Activity</h3>
+      <ng-container *ngIf="recentActivity.length > 0">
+        <div class="activity-item" *ngFor="let activity of recentActivity; let i = index">
+          <div class="activity-text">
+            <ng-container *ngIf="activity.action == 'OUT'">
+              <mat-icon class="activity-icon out">remove_circle_outline</mat-icon>
+            </ng-container>
+            <ng-container *ngIf="activity.action == 'IN'">
+              <mat-icon class="activity-icon in">add_circle_outline</mat-icon>
+            </ng-container>
+            <div><span class="activity-title">{{activity.title}}</span> <span class="activity-action">{{activity.action == 'OUT' ? 'checked out by' : 'checked in by'}}</span> <span class="activity-student">{{activity.first_name}} {{activity.last_name}}</span></div>
+          </div>
+          <div class="activity-date">{{formatDateTime(activity.date)}}</div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="recentActivity.length == 0">
+        <app-info-indicator [infoText]="'No activity yet'"></app-info-indicator>
+      </ng-container>
+    </div>
     <div class="dashboard-table">
       <h3>Overdue Books</h3>
       <ng-container *ngIf="overdueBooks.filteredData.length > 0">
