@@ -1,11 +1,11 @@
 .sidenav-container {
   min-height: 100vh;
-  padding-top: 64px;
+  // padding-top: 64px;
 }
 
 .sidenav-window {
   width: 300px;
-  padding-top: 64px;
+  // padding-top: 64px;
 }
 
 .sidenav-title {
@@ -14,7 +14,7 @@
 
 @media (max-width: 600px) {
   .sidenav-container, .sidenav-window {
-    padding-top: 56px;
+    // padding-top: 56px;
   }
 }
 

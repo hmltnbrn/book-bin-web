@@ -1,3 +1,41 @@
+@import '~sass/variables';
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+header.signed-in {
+  background: white;
+  height: 100px;
+  border-bottom: 2px solid rgba(63, 81, 181, .3);
+}
+
+header.signed-out {
+  background: $primary-color;
+  color: $white-subdued;
+  height: 56px;
+}
+
+.header-side {
+  display: flex;
+  align-items: center;
+}
+
+.header-name {
+  font-size: 20px;
+  text-align: right;
+  margin: 0 5px;
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+@media(max-width: 450px) {
+  header {
+    padding: 0 5px;
+  }
 }

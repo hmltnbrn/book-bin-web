@@ -1,20 +1,32 @@
-<header>
-  <mat-toolbar color="primary">
-    <button mat-icon-button (click)="toggleSideNav()" *ngIf="username">
+<header class="signed-in" *ngIf="username">
+  <div class="header-side">
+    <button mat-icon-button (click)="toggleSideNav()">
       <mat-icon>menu</mat-icon>
     </button>
-    <a mat-button routerLink="/" (click)="closeSideNav()">Home</a>
-    <a mat-button [routerLink]="['/library/dashboard']" (click)="closeSideNav()" *ngIf="username">My Library</a>
-    <span class="spacer"></span>
-    <a mat-button routerLink="/signin" *ngIf="!username">Sign In</a>
-    <a mat-button routerLink="/signup" *ngIf="!username">Sign Up</a>
+    <div class="header-name">
+      Classroom<br/>Library
+    </div>
+  </div>
+  <div class="header-side">
+    <a mat-button [routerLink]="['/library/dashboard']" (click)="closeSideNav()">My Library</a>
     <mat-menu #appMenu="matMenu">
       <a mat-menu-item routerLink="/profile">Profile</a>
       <a mat-menu-item routerLink="/help">Help</a>
       <a mat-menu-item routerLink="/signout">Sign Out</a>
     </mat-menu>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="username">
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon>person</mat-icon>
     </button>
-  </mat-toolbar>
+  </div>
+</header>
+<header class="signed-out" *ngIf="!username">
+  <div class="header-side">
+    <div class="header-name">
+      Classroom<br/>Library
+    </div>
+  </div>
+  <div class="header-side">
+    <a mat-button routerLink="/signin">Sign In</a>
+    <a mat-button routerLink="/signup">Sign Up</a>
+  </div>
 </header>
