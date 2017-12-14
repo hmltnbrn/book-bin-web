@@ -1,21 +1,9 @@
-.sidenav-container {
-  min-height: 100vh;
-  // padding-top: 64px;
-}
-
 .sidenav-window {
   width: 300px;
-  // padding-top: 64px;
 }
 
 .sidenav-title {
   margin: 20px 16px 5px 16px;
-}
-
-@media (max-width: 600px) {
-  .sidenav-container, .sidenav-window {
-    // padding-top: 56px;
-  }
 }
 
 @media (max-width: 450px) {
