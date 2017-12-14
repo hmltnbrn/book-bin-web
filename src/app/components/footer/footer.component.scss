@@ -6,20 +6,21 @@ footer {
   padding-bottom: 20px;
   font-size: 13px;
   text-align: center;
-  background-color: $primary-color;
+  background-color: white;
   flex: none;
+  border-top: 2px solid rgba(63, 81, 181, .3);
 }
 
 footer p {
   margin: 5px;
-  color: $white-subdued;
+  color: $primary-color;
 }
 
 footer {
   a:link,
   a:visited,
   a:hover {
-    color: $white-subdued;
+    color: $primary-color;
     text-decoration: underline;
   }
 }

@@ -1,32 +1,36 @@
 <header class="signed-in" *ngIf="username">
-  <div class="header-side">
-    <button mat-icon-button (click)="toggleSideNav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="header-name">
-      <a routerLink="/">Classroom<br/>Library</a>
+  <div class="header-content">
+    <div class="header-side">
+      <button mat-icon-button (click)="toggleSideNav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="header-name">
+        <a routerLink="/">Classroom<br/>Library</a>
+      </div>
     </div>
-  </div>
-  <div class="header-side">
-    <a mat-button [routerLink]="['/library/dashboard']" (click)="closeSideNav()">My Library</a>
-    <mat-menu #appMenu="matMenu">
-      <a mat-menu-item routerLink="/profile">Profile</a>
-      <a mat-menu-item routerLink="/help">Help</a>
-      <a mat-menu-item routerLink="/signout">Sign Out</a>
-    </mat-menu>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
-      <mat-icon>person</mat-icon>
-    </button>
+    <div class="header-side">
+      <a mat-button [routerLink]="['/library/dashboard']" (click)="closeSideNav()">My Library</a>
+      <mat-menu #appMenu="matMenu">
+        <a mat-menu-item routerLink="/profile">Profile</a>
+        <a mat-menu-item routerLink="/help">Help</a>
+        <a mat-menu-item routerLink="/signout">Sign Out</a>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>person</mat-icon>
+      </button>
+    </div>
   </div>
 </header>
 <header class="signed-out" *ngIf="!username">
-  <div class="header-side">
-    <div class="header-name">
-      Classroom<br/>Library
+  <div class="header-content">
+    <div class="header-side">
+      <div class="header-name">
+        Classroom<br/>Library
+      </div>
     </div>
-  </div>
-  <div class="header-side">
-    <a mat-button routerLink="/signin">Sign In</a>
-    <a mat-button routerLink="/signup">Sign Up</a>
+    <div class="header-side">
+      <a mat-button routerLink="/signin">Sign In</a>
+      <a mat-button routerLink="/signup">Sign Up</a>
+    </div>
   </div>
 </header>

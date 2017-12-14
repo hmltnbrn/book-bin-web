@@ -1,3 +1,4 @@
+<app-header [username]="username" (toggleSide)="sidenav.toggle()" (closeSide)="sidenav.close()"></app-header>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav class="sidenav-window" [fixedInViewport]="true" [fixedBottomGap]="0" [fixedTopGap]="0">
     <h2 class="sidenav-title">My Library</h2>
@@ -11,7 +12,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <div class="wrapper">
-    <app-header [username]="username" (toggleSide)="sidenav.toggle()" (closeSide)="sidenav.close()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>

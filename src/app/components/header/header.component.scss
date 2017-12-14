@@ -1,22 +1,29 @@
 @import '~sass/variables';
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 64px;
 }
 
 header.signed-in {
   background: white;
-  height: 100px;
   border-bottom: 2px solid rgba(63, 81, 181, .3);
 }
 
 header.signed-out {
   background: $primary-color;
   color: $white-subdued;
-  height: 56px;
+}
+
+.header-content {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .header-side {
@@ -28,6 +35,10 @@ header.signed-out {
   font-size: 20px;
   text-align: right;
   margin: 0 5px;
+  a {
+    color: $primary-color;
+    text-decoration: none;
+  }
 }
 
 .spacer {
@@ -35,7 +46,7 @@ header.signed-out {
 }
 
 @media(max-width: 450px) {
-  header {
+  .header-content {
     padding: 0 5px;
   }
 }
