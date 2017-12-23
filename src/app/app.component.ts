@@ -13,9 +13,9 @@ export class AppComponent {
   isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService) {
-    // this.router.events.subscribe(event => {
-    //   this.navigationInterceptor(event);
-    // });
+    this.router.events.subscribe(event => {
+      this.navigationInterceptor(event);
+    });
   }
 
   @HostListener('window:beforeunload', [ '$event' ])
@@ -33,6 +33,7 @@ export class AppComponent {
     }
     if (event instanceof NavigationEnd) {
       this.isLoading = false;
+      window.scrollTo(0, 0);
     }
 
     if (event instanceof NavigationCancel) {

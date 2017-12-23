@@ -11,9 +11,9 @@ export class LibraryComponent {
   isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private router: Router) {
-    this.router.events.subscribe(event => {
-      this.navigationInterceptor(event);
-    });
+    // this.router.events.subscribe(event => {
+    //   this.navigationInterceptor(event);
+    // });
   }
 
   navigationInterceptor(event: RouterEvent): void {

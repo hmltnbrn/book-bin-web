@@ -4,13 +4,13 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 998;
   height: 64px;
 }
 
 header.signed-in {
   background: white;
-  border-bottom: 2px solid rgba(63, 81, 181, .3);
+  border-bottom: 1px solid rgba(63, 81, 181, .3);
 }
 
 header.signed-out {
@@ -23,7 +23,8 @@ header.signed-out {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 200px;
+  position: relative;
 }
 
 .header-side {
@@ -41,12 +42,29 @@ header.signed-out {
   }
 }
 
+.hamburger-button {
+  position: absolute;
+  left: 20px;
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+@media(max-width: 900px) and (min-width: 450px) {
+  .header-content {
+    padding: 0 20px;
+  }
+  .hamburger-button {
+    position: unset;
+  }
 }
 
 @media(max-width: 450px) {
   .header-content {
     padding: 0 5px;
+  }
+  .hamburger-button {
+    position: unset;
   }
 }
