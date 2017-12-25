@@ -58,7 +58,7 @@ export class BookDetailComponent implements OnInit {
       author: new FormControl(book.author, Validators.required),
       genres: new FormArray((<string[]>book.genres).map(val => new FormControl(val)), Validators.required),
       description: new FormControl(book.description),
-      reading_level: new FormControl(book.reading_level, Validators.required),
+      reading_level: new FormControl(book.reading_level),
       number_in: new FormControl(book.number_in, Validators.required),
       number_out: new FormControl(book.number_out, Validators.required),
       total: new FormControl(book.number_in + book.number_out, [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]),
@@ -123,20 +123,9 @@ export class BookDetailComponent implements OnInit {
     this.createForm(this.bookData);
   }
 
-  newNumberIn() {
-    let numberOut = this.bookForm.value.number_out;
-    let total = this.bookForm.value.total;
-    if(total == numberOut) {
-      return 0;
-    }
-    else {
-      return total - numberOut;
-    }
-  }
-
   onSubmit() {
     this.isLoading = true;
-    this.bookForm.controls.number_in.setValue(this.newNumberIn());
+    this.bookForm.controls.number_in.setValue(this.bookForm.value.total - this.bookForm.value.number_out);
     let finalValues = this.bookForm.value;
     delete finalValues.total;
     console.log(finalValues);

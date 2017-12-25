@@ -44,7 +44,7 @@
     </mat-form-field>
     <div class="small-form-container">
       <mat-form-field>
-        <input matInput placeholder="Reading Level" formControlName="reading_level" required>
+        <input matInput placeholder="Reading Level" formControlName="reading_level">
         <mat-error *ngIf="bookForm.controls.reading_level.invalid">{{getErrorMessage(bookForm.controls.reading_level)}}</mat-error>
       </mat-form-field>
       <mat-form-field>
