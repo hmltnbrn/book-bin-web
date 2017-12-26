@@ -41,3 +41,15 @@
   top: -4px;
   left: -10px;
 }
+
+.reading-level-search {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.page-link {
+  min-width: 36px;
+  padding: 0;
+  font-size: 13px;
+}

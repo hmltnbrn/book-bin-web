@@ -23,11 +23,12 @@ export class BookService {
     return this.http.get(environment.api + '/api/Books/' + id);
   }
 
-  GetAllTeacherBooks(page?: string, pageSize?: string, search?: string) {
+  GetAllTeacherBooks(page?: string, pageSize?: string, search?: string, readingLevel?: string) {
     let params = new HttpParams();
     params = params.append('page', page ? page: '0');
     params = params.append('pageSize', pageSize ? pageSize : '0');
     params = params.append('search', search ? search : '');
+    params = params.append('readingLevel', readingLevel ? readingLevel : '');
     return this.http.get<MultipleResponseModel>(environment.api + '/api/Books/TeacherBooks', {
       params: params
     });

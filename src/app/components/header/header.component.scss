@@ -23,7 +23,7 @@ header.signed-out {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 200px;
+  padding: 0 100px;
   position: relative;
 }
 
@@ -35,7 +35,7 @@ header.signed-out {
 .header-name {
   font-size: 20px;
   text-align: right;
-  margin: 0 5px;
+  margin: 0;
   a {
     color: $primary-color;
     text-decoration: none;
@@ -58,6 +58,9 @@ header.signed-out {
   .hamburger-button {
     position: unset;
   }
+  .header-name {
+    margin: 0 5px;
+  }
 }
 
 @media(max-width: 450px) {
@@ -66,5 +69,8 @@ header.signed-out {
   }
   .hamburger-button {
     position: unset;
+  }
+  .header-name {
+    margin: 0 5px;
   }
 }

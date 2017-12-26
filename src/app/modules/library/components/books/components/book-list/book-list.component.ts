@@ -8,14 +8,14 @@ import { ConfirmDialogComponent } from '@modules/shared/components/dialogs/confi
 import { StudentCheckOutComponent } from '@modules/library/components/dialogs/student-check-out/student-check-out.component';
 import { StudentCheckInComponent } from '@modules/library/components/dialogs/student-check-in/student-check-in.component';
 import { BookDeleteComponent } from '@modules/library/components/dialogs/book-delete/book-delete.component';
-import { ReadingLevels } from '@global/reading-levels.global';
+import { Alphabet } from '@global/alphabet.global';
 import { MultipleResponseModel } from '@models/multiple-response.model';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
-  providers: [BookService, ReadingLevels]
+  providers: [BookService, Alphabet]
 })
 export class BookListComponent implements OnInit {
 
@@ -23,7 +23,9 @@ export class BookListComponent implements OnInit {
   studentsData: any;
   totalItems: number;
 
-  constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService, private dialog: MatDialog, private readingLevels: ReadingLevels) { }
+  selectLevel: string;
+
+  constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService, private dialog: MatDialog, private alphabet: Alphabet) { }
 
   ngOnInit() {
     this.route.data
@@ -34,6 +36,9 @@ export class BookListComponent implements OnInit {
         this.studentsData = data.students;
         this.totalItems = data.books["totalItems"];
       });
+    this.route.queryParams.subscribe(params => {
+      this.selectLevel = params["readingLevel"] || '';
+    });
   }
 
   checkOutDialog(id: number, title: string): void {
@@ -106,6 +111,16 @@ export class BookListComponent implements OnInit {
       }
     }
     this.totalItems--;
+  }
+
+  onReadingLevelClick(letter) {
+    this.selectLevel = letter;
+    let newParams;
+    this.route.queryParams.subscribe(params => {
+      newParams = JSON.parse(JSON.stringify(params));
+    });
+    newParams["readingLevel"] = letter;
+    this.router.navigate(['/library/books'], { queryParams: newParams });
   }
 
 }

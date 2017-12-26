@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class ReadingLevels {
+export class Alphabet {
   values: Array<string> = [
     'A',
     'B',

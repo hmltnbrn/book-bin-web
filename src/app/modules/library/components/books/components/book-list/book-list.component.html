@@ -1,7 +1,7 @@
-<app-search
-  [placeholderText]="'Search for a title or author'"
+<app-full-width-search
+  [placeholderText]="'Search titles and authors'"
   [pageUrl]="'/library/books'"
-></app-search>
+></app-full-width-search>
 <div class="books-container">
   <p class="no-results" *ngIf="booksData.result.length == 0">No Results</p>
   <div class="book-card" *ngFor="let book of booksData.result; let i = index">
@@ -40,6 +40,12 @@
     </mat-menu>
   </div>
 </div>
+<!-- <div class="reading-level-search">
+  <ng-container *ngFor="let letter of alphabet.values; let i = index">
+    <button mat-button class="page-link" (click)="onReadingLevelClick(letter)" *ngIf="letter != selectLevel">{{letter}}</button>
+    <button mat-raised-button color="primary" class="page-link" (click)="onReadingLevelClick(letter)" *ngIf="letter == selectLevel">{{letter}}</button>
+  </ng-container>
+</div> -->
 <app-paginator
   [totalItems]="totalItems"
   [pageSize]="booksData.pageSize"

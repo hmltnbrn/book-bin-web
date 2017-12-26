@@ -1,0 +1,11 @@
+<div class="search-field">
+  <mat-icon class="search-icon">search</mat-icon>
+  <input type="text" [placeholder]="placeholderText" [(ngModel)]="search" (keyup.enter)="onSearch()">
+  <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="search='';onSearch()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="button-container">
+  <button mat-button color="primary" class="search-button" (click)="onSearch()">Search</button>
+  <button mat-button color="primary" class="search-button">Advanced</button>
+</div>

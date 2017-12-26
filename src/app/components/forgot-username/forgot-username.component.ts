@@ -23,7 +23,7 @@ export class ForgotUsernameComponent implements OnInit {
 
   ngOnInit() {
     this.emailForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email])
+      email: new FormControl('', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)])
     });
   }
 
@@ -31,7 +31,7 @@ export class ForgotUsernameComponent implements OnInit {
     if (control.hasError('required')) {
       return 'Please enter a value';
     }
-    else if (control.hasError('email')) {
+    else if (control.hasError('pattern') && field == 'email') {
       return 'Please enter a valid email';
     }
     else {

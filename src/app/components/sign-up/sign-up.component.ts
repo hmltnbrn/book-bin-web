@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
       title: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]),
       schoolName: new FormControl('', Validators.required),
       zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),
       role: new FormControl(2)
@@ -44,7 +44,7 @@ export class SignUpComponent implements OnInit {
     if (control.hasError('required')) {
       return 'Please enter a value';
     }
-    else if (control.hasError('email')) {
+    else if (control.hasError('pattern') && field == 'email') {
       return 'Please enter a valid email';
     }
     else if (control.hasError('pattern') && field == 'zip') {

@@ -32,7 +32,7 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Email" formControlName="email" required>
-          <mat-error *ngIf="signUpForm.controls.email.invalid">{{getErrorMessage(signUpForm.controls.email)}}</mat-error>
+          <mat-error *ngIf="signUpForm.controls.email.invalid">{{getErrorMessage(signUpForm.controls.email, 'email')}}</mat-error>
           <mat-hint align="end">e.g. name@domain.com</mat-hint>
         </mat-form-field>
         <div class="button-container">
