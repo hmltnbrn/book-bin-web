@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,6 +10,8 @@ export class FullWidthSearchComponent implements OnInit {
 
   @Input() placeholderText: string;
   @Input() pageUrl: string;
+
+  @Output() advancedSearch = new EventEmitter();
 
   search: string = '';
 
@@ -29,6 +31,10 @@ export class FullWidthSearchComponent implements OnInit {
     newParams["search"] = this.search;
     newParams["page"] = 1;
     this.router.navigate([this.pageUrl], { queryParams: newParams });
+  }
+
+  onAdvancedSearch() {
+    this.advancedSearch.emit();
   }
 
 }

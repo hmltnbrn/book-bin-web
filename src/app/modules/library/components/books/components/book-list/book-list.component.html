@@ -1,6 +1,7 @@
 <app-full-width-search
   [placeholderText]="'Search titles and authors'"
   [pageUrl]="'/library/books'"
+  (advancedSearch)="advancedSearchDialog()"
 ></app-full-width-search>
 <div class="books-container">
   <p class="no-results" *ngIf="booksData.result.length == 0">No Results</p>

@@ -14,6 +14,7 @@ import { StudentCheckInComponent } from './components/dialogs/student-check-in/s
 import { BookListComponent } from './components/books/components/book-list/book-list.component';
 import { BookDetailComponent } from './components/books/components/book-detail/book-detail.component';
 import { BookDeleteComponent } from './components/dialogs/book-delete/book-delete.component';
+import { BookAdvancedSearchComponent } from './components/dialogs/book-advanced-search/book-advanced-search.component';
 
 @NgModule({
   imports: [
@@ -29,12 +30,14 @@ import { BookDeleteComponent } from './components/dialogs/book-delete/book-delet
     StudentCheckInComponent,
     BookListComponent,
     BookDetailComponent,
-    BookDeleteComponent
+    BookDeleteComponent,
+    BookAdvancedSearchComponent
   ],
   entryComponents: [
     StudentCheckOutComponent,
     StudentCheckInComponent,
-    BookDeleteComponent
+    BookDeleteComponent,
+    BookAdvancedSearchComponent
   ],
   providers: [
     BookService,

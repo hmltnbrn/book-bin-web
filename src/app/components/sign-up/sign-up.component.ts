@@ -4,12 +4,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AccountService } from '@services/account.service';
 import { StorageService } from '@services/storage.service';
 import { PasswordValidator } from '@validators/password.validator';
+import { Titles } from '@global/titles.global';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  providers: [AccountService, StorageService]
+  providers: [AccountService, StorageService, Titles]
 })
 export class SignUpComponent implements OnInit {
 
@@ -21,9 +22,9 @@ export class SignUpComponent implements OnInit {
   signedUp: boolean = false;
   isLoading: boolean = false;
 
-  titles: Array<string> = ['Mr.', 'Mrs.', 'Miss', 'Ms.', 'Dr.'];
+  //titles: Array<string> = ['Mr.', 'Mrs.', 'Miss', 'Ms.', 'Dr.'];
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) { }
+  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private titles: Titles) { }
 
   ngOnInit() {
     this.signUpForm = new FormGroup({

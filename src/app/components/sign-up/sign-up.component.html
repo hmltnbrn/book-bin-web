@@ -16,7 +16,7 @@
         <mat-form-field>
           <mat-select placeholder="Title" formControlName="title" required>
             <mat-option>Select</mat-option>
-            <mat-option *ngFor="let title of titles" [value]="title">
+            <mat-option *ngFor="let title of titles.values" [value]="title">
               {{title}}
             </mat-option>
           </mat-select>
@@ -86,7 +86,7 @@
         <mat-form-field>
           <mat-select placeholder="Title" formControlName="title" required>
             <mat-option>Select</mat-option>
-            <mat-option *ngFor="let title of titles" [value]="title">
+            <mat-option *ngFor="let title of titles.values" [value]="title">
               {{title}}
             </mat-option>
           </mat-select>
@@ -102,7 +102,7 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Email" formControlName="email" required>
-          <mat-error *ngIf="signUpForm.controls.email.invalid">{{getErrorMessage(signUpForm.controls.email)}}</mat-error>
+          <mat-error *ngIf="signUpForm.controls.email.invalid">{{getErrorMessage(signUpForm.controls.email, 'email')}}</mat-error>
           <mat-hint align="end">e.g. name@domain.com</mat-hint>
         </mat-form-field>
         <div class="button-container">

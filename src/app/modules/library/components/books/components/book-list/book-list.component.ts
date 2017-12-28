@@ -8,6 +8,7 @@ import { ConfirmDialogComponent } from '@modules/shared/components/dialogs/confi
 import { StudentCheckOutComponent } from '@modules/library/components/dialogs/student-check-out/student-check-out.component';
 import { StudentCheckInComponent } from '@modules/library/components/dialogs/student-check-in/student-check-in.component';
 import { BookDeleteComponent } from '@modules/library/components/dialogs/book-delete/book-delete.component';
+import { BookAdvancedSearchComponent } from '@modules/library/components/dialogs/book-advanced-search/book-advanced-search.component';
 import { Alphabet } from '@global/alphabet.global';
 import { MultipleResponseModel } from '@models/multiple-response.model';
 
@@ -80,6 +81,18 @@ export class BookListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
       if(result) this.removeFromData(id);
+    });
+  }
+
+  advancedSearchDialog(): void {
+    let dialogRef = this.dialog.open(BookAdvancedSearchComponent, {
+      minWidth: '250px',
+      maxWidth: '550px',
+      width: '80vw',
+      data: {}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
 
