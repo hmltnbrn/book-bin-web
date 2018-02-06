@@ -12,9 +12,11 @@ import { BooksComponent } from './components/books/books.component';
 import { StudentCheckOutComponent } from './components/dialogs/student-check-out/student-check-out.component';
 import { StudentCheckInComponent } from './components/dialogs/student-check-in/student-check-in.component';
 import { BookListComponent } from './components/books/components/book-list/book-list.component';
+import { BookAddComponent } from './components/books/components/book-add/book-add.component';
 import { BookDetailComponent } from './components/books/components/book-detail/book-detail.component';
 import { BookDeleteComponent } from './components/dialogs/book-delete/book-delete.component';
 import { BookAdvancedSearchComponent } from './components/dialogs/book-advanced-search/book-advanced-search.component';
+import { AddEntityComponent } from './components/dialogs/add-entity/add-entity.component';
 
 @NgModule({
   imports: [
@@ -29,15 +31,18 @@ import { BookAdvancedSearchComponent } from './components/dialogs/book-advanced-
     StudentCheckOutComponent,
     StudentCheckInComponent,
     BookListComponent,
+    BookAddComponent,
     BookDetailComponent,
     BookDeleteComponent,
-    BookAdvancedSearchComponent
+    BookAdvancedSearchComponent,
+    AddEntityComponent
   ],
   entryComponents: [
     StudentCheckOutComponent,
     StudentCheckInComponent,
     BookDeleteComponent,
-    BookAdvancedSearchComponent
+    BookAdvancedSearchComponent,
+    AddEntityComponent
   ],
   providers: [
     BookService,

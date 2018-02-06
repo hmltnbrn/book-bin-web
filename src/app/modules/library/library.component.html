@@ -1,2 +1,6 @@
-<!-- <app-loading-spinner *ngIf="isLoading"></app-loading-spinner> -->
-<router-outlet></router-outlet>
+<div class="library-container">
+  <router-outlet></router-outlet>
+  <button mat-fab color="primary" (click)="onAdd()">
+    <mat-icon aria-label="Add">add</mat-icon>
+  </button>
+</div>

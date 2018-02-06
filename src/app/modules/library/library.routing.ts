@@ -13,6 +13,7 @@ import { LibraryComponent } from './library.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
 import { BookListComponent } from './components/books/components/book-list/book-list.component';
+import { BookAddComponent } from './components/books/components/book-add/book-add.component';
 import { BookDetailComponent } from './components/books/components/book-detail/book-detail.component';
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
                   books: AllBooksResolver,
                   students: AllActiveStudentsResolver
                 }
+              },
+              {
+                path: 'add',
+                component: BookAddComponent
               },
               {
                 path: ':id',

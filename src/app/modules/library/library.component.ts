@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { AddEntityComponent } from '@modules/library/components/dialogs/add-entity/add-entity.component';
 
 @Component({
   selector: 'app-library',
@@ -8,28 +10,16 @@ import { Router, ActivatedRoute, Event as RouterEvent, NavigationStart, Navigati
 })
 export class LibraryComponent {
 
-  isLoading: boolean = true;
+  constructor(private route: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-    // this.router.events.subscribe(event => {
-    //   this.navigationInterceptor(event);
-    // });
-  }
-
-  navigationInterceptor(event: RouterEvent): void {
-    if (event instanceof NavigationStart) {
-      this.isLoading = true;
-    }
-    if (event instanceof NavigationEnd) {
-      this.isLoading = false;
-    }
-
-    if (event instanceof NavigationCancel) {
-      this.isLoading = false;
-    }
-    if (event instanceof NavigationError) {
-      this.isLoading = false;
-    }
+  onAdd() {
+    let dialogRef = this.dialog.open(AddEntityComponent, {
+      minWidth: '250px',
+      maxWidth: '250px',
+      width: '80vw',
+      disableClose: false,
+      data: { title: "Add" }
+    });
   }
 
 }
