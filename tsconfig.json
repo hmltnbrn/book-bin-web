@@ -23,6 +23,9 @@
       "@directives/*": [
         "app/directives/*"
       ],
+      "@environments/*": [
+        "environments/*"
+      ],
       "@global/*": [
         "app/global/*"
       ],

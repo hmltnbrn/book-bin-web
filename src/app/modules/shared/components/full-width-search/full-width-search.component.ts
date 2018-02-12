@@ -10,6 +10,7 @@ export class FullWidthSearchComponent implements OnInit {
 
   @Input() placeholderText: string;
   @Input() pageUrl: string;
+  @Input() instantSearch: boolean = false;
 
   @Output() advancedSearch = new EventEmitter();
 
@@ -21,6 +22,10 @@ export class FullWidthSearchComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.search = params["search"];
     });
+  }
+
+  onChange() {
+    if(this.instantSearch) this.onSearch();
   }
 
   onSearch() {

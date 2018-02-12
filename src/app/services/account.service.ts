@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '@environments/environment';
 
 @Injectable()
 export class AccountService {
@@ -31,6 +31,14 @@ export class AccountService {
 
   ForgotUsername(email) {
     return this.http.post(environment.api + '/auth/ForgotUsername', email);
+  }
+
+  ChangePassword(passwords) {
+    return this.http.post(environment.api + '/auth/ChangePassword', passwords);
+  }
+
+  GetProfile() {
+    return this.http.get(environment.api + '/auth/Profile');
   }
 
 }

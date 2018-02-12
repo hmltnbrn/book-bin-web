@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AccountService } from '@services/account.service';
 import { StorageService } from '@services/storage.service';
-import { PasswordValidator } from '@validators/password.validator';
+import { MatchPasswordValidator } from '@validators/match-password.validator';
 import { Titles } from '@global/titles.global';
 
 @Component({
@@ -22,8 +22,6 @@ export class SignUpComponent implements OnInit {
   signedUp: boolean = false;
   isLoading: boolean = false;
 
-  //titles: Array<string> = ['Mr.', 'Mrs.', 'Miss', 'Ms.', 'Dr.'];
-
   constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private titles: Titles) { }
 
   ngOnInit() {
@@ -38,7 +36,7 @@ export class SignUpComponent implements OnInit {
       schoolName: new FormControl('', Validators.required),
       zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),
       role: new FormControl(2)
-    }, PasswordValidator.MatchPassword);
+    }, MatchPasswordValidator('password','confirmPassword'));
   }
 
   getErrorMessage(control: FormControl, field?: string) {

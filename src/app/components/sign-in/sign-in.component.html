@@ -1,7 +1,7 @@
 <div class="logo">
   <a routerLink="../">Classroom Library</a>
 </div>
-<div class="center-error-indicator">
+<div class="center-indicator">
   <app-error-indicator [errorText]="apiError"></app-error-indicator>
 </div>
 <form id="sign-in-form" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="signInForm" novalidate>
