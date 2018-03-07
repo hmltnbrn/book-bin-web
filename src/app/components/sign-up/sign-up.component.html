@@ -42,6 +42,15 @@
       <mat-step>
         <ng-template matStepLabel>School information</ng-template>
         <mat-form-field>
+          <mat-select placeholder="Grade" formControlName="grade" required>
+            <mat-option>Select</mat-option>
+            <mat-option *ngFor="let grade of grades.values" [value]="grade">
+              {{grade}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="signUpForm.controls.grade.hasError('required')">Please choose a grade</mat-error>
+        </mat-form-field>
+        <mat-form-field>
           <input matInput placeholder="School name" formControlName="schoolName" required>
           <mat-error *ngIf="signUpForm.controls.schoolName.invalid">{{getErrorMessage(signUpForm.controls.schoolName)}}</mat-error>
         </mat-form-field>
@@ -111,6 +120,15 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>School information</ng-template>
+        <mat-form-field>
+          <mat-select placeholder="Grade" formControlName="grade" required>
+            <mat-option>Select</mat-option>
+            <mat-option *ngFor="let grade of grades.values" [value]="grade">
+              {{grade}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="signUpForm.controls.grade.hasError('required')">Please choose a grade</mat-error>
+        </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="School name" formControlName="schoolName" required>
           <mat-error *ngIf="signUpForm.controls.schoolName.invalid">{{getErrorMessage(signUpForm.controls.schoolName)}}</mat-error>

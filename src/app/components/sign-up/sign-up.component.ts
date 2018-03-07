@@ -5,12 +5,13 @@ import { AccountService } from '@services/account.service';
 import { StorageService } from '@services/storage.service';
 import { MatchPasswordValidator } from '@validators/match-password.validator';
 import { Titles } from '@global/titles.global';
+import { Grades } from '@global/grades.global';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  providers: [AccountService, StorageService, Titles]
+  providers: [AccountService, StorageService, Titles, Grades]
 })
 export class SignUpComponent implements OnInit {
 
@@ -22,7 +23,7 @@ export class SignUpComponent implements OnInit {
   signedUp: boolean = false;
   isLoading: boolean = false;
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private titles: Titles) { }
+  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private titles: Titles, private grades: Grades) { }
 
   ngOnInit() {
     this.signUpForm = new FormGroup({
@@ -33,6 +34,7 @@ export class SignUpComponent implements OnInit {
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]),
+      grade: new FormControl('', Validators.required),
       schoolName: new FormControl('', Validators.required),
       zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),
       role: new FormControl(2)
