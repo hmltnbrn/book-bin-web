@@ -129,7 +129,7 @@ export class BookDetailComponent implements OnInit {
     let finalValues = this.bookForm.value;
     delete finalValues.total;
     console.log(finalValues);
-    this.bookService.AddEditBook(finalValues).subscribe(
+    this.bookService.EditBook(finalValues).subscribe(
       data => {
         console.log(data);
         this.bookData = data;
