@@ -23,7 +23,7 @@ header.signed-out {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 100px;
+  padding: 0 200px;
   position: relative;
 }
 
@@ -49,6 +49,11 @@ header.signed-out {
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.profile-button {
+  position: absolute;
+  right: 20px;
 }
 
 @media(max-width: 900px) and (min-width: 450px) {

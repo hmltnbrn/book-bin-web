@@ -5,17 +5,20 @@
         <mat-icon>menu</mat-icon>
       </button>
       <div class="header-name">
-        <a routerLink="/">Classroom<br/>Library</a>
+        <a routerLink="/">Book<br/>Bin</a>
       </div>
     </div>
     <div class="header-side">
+      <a mat-button [routerLink]="['/library/books']" (click)="closeSideNav()">Books</a>
+      <a mat-button [routerLink]="['/library/students']" (click)="closeSideNav()">Students</a>
+      <a mat-button [routerLink]="['/library/classes']" (click)="closeSideNav()">Classes</a>
       <a mat-button [routerLink]="['/library/dashboard']" (click)="closeSideNav()">My Library</a>
       <mat-menu #appMenu="matMenu">
         <a mat-menu-item routerLink="/profile">Profile</a>
         <a mat-menu-item routerLink="/help">Help</a>
         <a mat-menu-item routerLink="/signout">Sign Out</a>
       </mat-menu>
-      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <button mat-icon-button [matMenuTriggerFor]="appMenu" class="profile-button">
         <mat-icon>person</mat-icon>
       </button>
     </div>
@@ -25,7 +28,7 @@
   <div class="header-content">
     <div class="header-side">
       <div class="header-name">
-        Classroom<br/>Library
+        Book<br/>Bin
       </div>
     </div>
     <div class="header-side">
