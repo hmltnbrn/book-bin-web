@@ -1,8 +1,29 @@
 <div class="main">
-  <div class="main-header">
+<!--   <div class="main-header">
     <h1>Organize. Browse. Check Out</h1>
     <p>We take your books off the shelf and out of the bin</p>
+  </div> -->
+  <div class="main-banner">
   </div>
-  <div class="content">
+  <div class="main-buttons">
+    <button class="main-button" [routerLink]="['/teachers']">Find My Teacher</button>
+    <button class="main-button" [routerLink]="['/bin']">Search the Bin</button>
+  </div>
+  <div class="main-content">
+    <section class="section-container">
+      <div class="section-text">
+        <h1>Organize. Browse. Track.</h1>
+        <p>We take your classroom's books off your cluttered shelves and out of your messy bins.</p>
+      </div>
+      <img class="section-image" src="./assets/images/shelves.jpeg"/>
+    </section>
+    <section class="section-breaker"></section>
+    <section class="section-container">
+      <img class="section-image" src="./assets/images/shelves.jpeg"/>
+      <div class="section-text">
+        <h1>Organize. Browse. Track.</h1>
+        <p>We take your classroom's books off your cluttered shelves and out of your messy bins.</p>
+      </div>
+    </section>
   </div>
 </div>

@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
       title: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]),
+      email: new FormControl('', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,63})+$/)]),
       grade: new FormControl('', Validators.required),
       schoolName: new FormControl('', Validators.required),
       zip: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}$/)]),

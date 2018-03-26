@@ -23,7 +23,7 @@ export class ForgotUsernameComponent implements OnInit {
 
   ngOnInit() {
     this.emailForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)])
+      email: new FormControl('', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,63})+$/)])
     });
   }
 
