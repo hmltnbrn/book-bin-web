@@ -18,6 +18,8 @@ import { BookDeleteComponent } from './components/dialogs/book-delete/book-delet
 import { BookAdvancedSearchComponent } from './components/dialogs/book-advanced-search/book-advanced-search.component';
 import { AddEntityComponent } from './components/dialogs/add-entity/add-entity.component';
 
+import { StudentsComponent } from './components/students/students.component';
+
 @NgModule({
   imports: [
     LibraryRoutingModule,
@@ -35,7 +37,8 @@ import { AddEntityComponent } from './components/dialogs/add-entity/add-entity.c
     BookDetailComponent,
     BookDeleteComponent,
     BookAdvancedSearchComponent,
-    AddEntityComponent
+    AddEntityComponent,
+    StudentsComponent
   ],
   entryComponents: [
     StudentCheckOutComponent,

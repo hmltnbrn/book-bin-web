@@ -10,12 +10,10 @@ export class AllActiveStudentsResolver implements Resolve<any> {
   constructor(private studentService: StudentService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    let returnAll = 'true';
     let page = route.queryParams['page'] ? route.queryParams['page'] : '1';
     let pageSize = route.queryParams['pageSize'] ? route.queryParams['pageSize'] : '12';
-    let search = route.queryParams['search'] ? route.queryParams['search'] : '';
 
-    return this.studentService.GetAllTeacherStudents(returnAll, page, pageSize, search).catch(err => {
+    return this.studentService.GetAllTeacherStudents('true', page, pageSize).catch(err => {
       return Observable.of(err.error);
     });
   }
