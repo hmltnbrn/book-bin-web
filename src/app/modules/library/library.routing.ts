@@ -60,6 +60,10 @@ const routes: Routes = [
             resolve: {
               dashboard: DashboardResolver
             }
+          },
+          {
+            path: '',
+            redirectTo: '/library/dashboard',
           }
         ]
       }

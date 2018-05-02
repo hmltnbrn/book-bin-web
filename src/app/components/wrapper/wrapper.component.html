@@ -1,6 +1,44 @@
 <app-header [username]="username" (toggleSide)="sidenav.toggle()" (closeSide)="sidenav.close()"></app-header>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav class="sidenav-window" [fixedInViewport]="true" [fixedBottomGap]="0" [fixedTopGap]="0">
+  <mat-sidenav #sidenav class="sidenav-window" [fixedInViewport]="true" [fixedBottomGap]="0" [fixedTopGap]="0" [mode]="mobile ? 'over' : 'side'" [opened]="mobile || !username ? false : true">
+    <div class="sidenav-sections">
+      <section>
+        <div>
+          <button mat-mini-fab color="primary">
+            <mat-icon aria-label="Add">add</mat-icon>
+          </button>
+        </div>
+        <div>
+          <mat-menu #appMenu="matMenu">
+            <a mat-menu-item routerLink="/profile">Profile</a>
+            <a mat-menu-item routerLink="/help">Help</a>
+            <a mat-menu-item routerLink="/signout">Sign Out</a>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="appMenu" class="profile-button">
+            <mat-icon>person</mat-icon>
+          </button>
+        </div>
+      </section>
+      <section>
+        <mat-nav-list>
+          <h3 mat-subheader>Books</h3>
+          <mat-list-item [routerLink]="['/library/books']">My Books</mat-list-item>
+          <mat-list-item [routerLink]="['/library/checkedout']">Checked Out Books</mat-list-item>
+          <h3 mat-subheader>Students</h3>
+          <mat-list-item [routerLink]="['/library/students']">Students</mat-list-item>
+        </mat-nav-list>
+      </section>
+    </div>
+  </mat-sidenav>
+  <div class="wrapper">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</mat-sidenav-container>
+<!-- <mat-drawer-container class="sidenav-container">
+  <mat-drawer #sidenav [mode]="mobile ? 'over' : 'side'" [opened]="mobile ? false : true" class="drawer-container">
     <h2 class="sidenav-title">My Library</h2>
     <mat-nav-list>
       <h3 mat-subheader>Books</h3>
@@ -10,11 +48,13 @@
       <mat-list-item [routerLink]="['/library/students']" (click)="sidenav.close()">Students</mat-list-item>
       <mat-list-item [routerLink]="['/library/classes']" (click)="sidenav.close()">Classes</mat-list-item>
     </mat-nav-list>
-  </mat-sidenav>
-  <div class="wrapper">
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-    <app-footer></app-footer>
-  </div>
-</mat-sidenav-container>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="wrapper">
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container> -->

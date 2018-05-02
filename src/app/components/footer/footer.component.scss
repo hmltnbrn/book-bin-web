@@ -2,17 +2,16 @@
 
 footer {
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0px 20px 0;
   font-size: 13px;
-  text-align: center;
-  background-color: white;
+  text-align: right;
+  background-color: $background-color-secondary;
   flex: none;
-  border-top: 1px solid rgba(63, 81, 181, .3);
+  // border-top: 1px solid rgba(27, 94, 32, .3);
 }
 
 footer p {
-  margin: 5px;
+  margin: 5px 20px 5px 0;
   // color: $primary-color;
 }
 

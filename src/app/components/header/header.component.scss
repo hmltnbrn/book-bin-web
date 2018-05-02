@@ -6,7 +6,8 @@ header {
   top: 0;
   width: 100%;
   z-index: 998;
-  height: 45px;
+  // height: 45px;
+  height: 35px;
   color: white;
   @include rgba_primary(0.8);
 }
@@ -36,13 +37,14 @@ header.signed-out {
 }
 
 .header-name {
-  font-size: 20px;
-  text-align: right;
-  margin: 0;
+  font-size: 15px;
+  // text-align: right;
+  // margin: 0;
   // a {
   //   color: $primary-color;
   //   text-decoration: none;
   // }
+  // padding-left: 60px;
   a {
     color: white;
     text-decoration: none;
@@ -51,7 +53,7 @@ header.signed-out {
 
 .hamburger-button {
   position: absolute;
-  left: 20px;
+  left: 10px;
 }
 
 .spacer {
@@ -60,7 +62,7 @@ header.signed-out {
 
 .profile-button {
   position: absolute;
-  right: 20px;
+  right: 10px;
 }
 
 @media(max-width: 900px) and (min-width: 450px) {
