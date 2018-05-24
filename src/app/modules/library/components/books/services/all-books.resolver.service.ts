@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { BookService } from '@services/book.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AllBooksResolver implements Resolve<any> {
@@ -18,8 +17,10 @@ export class AllBooksResolver implements Resolve<any> {
     let search = route.queryParams['search'] ? route.queryParams['search'] : '';
     let readingLevel = route.queryParams['readingLevel'] ? route.queryParams['readingLevel'] : '';
 
-    return this.bookService.GetAllTeacherBooks(page, pageSize, search, readingLevel).catch(err => {
-      return Observable.of(err.error);
-    });
+    return this.bookService.GetAllTeacherBooks(page, pageSize, search, readingLevel).pipe(
+      catchError(err => {
+        return of(err.error);
+      })
+    );
   }
 }

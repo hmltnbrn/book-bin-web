@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 import { BookService } from '@services/book.service';
 import { MatChipInputEvent } from '@angular/material';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
@@ -217,11 +217,13 @@ export class BookDetailComponent implements OnInit {
           message: 'Are you sure you want to leave this page? All unsaved changes will be lost.'
         }
       });
-      return dialogRef.afterClosed().map(result => {
-        console.log(result)
-        if(result) return true;
-        else return false;
-      });
+      return dialogRef.afterClosed().pipe(
+        map(result => {
+          console.log(result)
+          if(result) return true;
+          else return false;
+        })
+      );
     }
     return true;
   }

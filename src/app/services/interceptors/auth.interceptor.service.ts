@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { AuthenticationService } from '@services/authentication.service';
-import 'rxjs/add/operator/do';
+import { tap } from 'rxjs/operators'
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
       auth = authData;
     }
     const authReq = req.clone({ setHeaders: { Authorization: 'BearerJWT ' + auth } });
-    return next.handle(authReq).do((event: HttpEvent<any>) => {
+    return next.handle(authReq).pipe(tap((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
 
       }
@@ -39,7 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
           this.router.navigate(['/500'], { skipLocationChange: true });
         }
       }
-    });
+    }));
   }
 
 }

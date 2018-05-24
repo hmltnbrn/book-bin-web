@@ -4,9 +4,8 @@ import { BookService } from '@services/book.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ClassValidator } from '@validators/class.validator';
 import { MomentValidator } from '@validators/moment.validator';
-import { Observable } from 'rxjs/Observable';
-import { startWith } from 'rxjs/operators/startWith';
-import { map } from 'rxjs/operators/map';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import * as moment from 'moment';
 
