@@ -10,7 +10,11 @@ import { AddEntityComponent } from '@modules/library/components/dialogs/add-enti
 })
 export class LibraryComponent {
 
-  constructor(private route: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private dialog: MatDialog
+  ) { }
 
   onAdd() {
     let dialogRef = this.dialog.open(AddEntityComponent, {

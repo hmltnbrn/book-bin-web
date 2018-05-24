@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from '@services/storage.service';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Component({
   selector: 'app-wrapper',
   templateUrl: './wrapper.component.html',
   styleUrls: ['./wrapper.component.scss'],
-  providers: [StorageService]
+  providers: [AuthenticationService]
 })
 export class WrapperComponent implements OnInit {
 
@@ -13,8 +13,10 @@ export class WrapperComponent implements OnInit {
 
   mobile: boolean = false;
 
-  constructor(private storageService: StorageService) {
-    this.username = this.storageService.getItem('username');
+  constructor(
+    private authService: AuthenticationService
+  ) {
+    this.username = this.authService.getUsername();
   }
 
   ngOnInit() {

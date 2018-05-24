@@ -7,7 +7,10 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class AllActiveStudentsResolver implements Resolve<any> {
-  constructor(private studentService: StudentService, private router: Router) { }
+  constructor(
+    private studentService: StudentService,
+    private router: Router
+  ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     let page = route.queryParams['page'] ? route.queryParams['page'] : '1';

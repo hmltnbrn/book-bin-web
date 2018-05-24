@@ -17,7 +17,10 @@ export class PaginatorComponent implements OnInit {
 
   pageIndex: number;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

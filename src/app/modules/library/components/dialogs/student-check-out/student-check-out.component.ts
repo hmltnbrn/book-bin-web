@@ -39,7 +39,11 @@ export class StudentCheckOutComponent {
 
   apiError: string;
 
-  constructor(public dialogRef: MatDialogRef<StudentCheckOutComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private bookService: BookService) {
+  constructor(
+    public dialogRef: MatDialogRef<StudentCheckOutComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private bookService: BookService
+  ) {
     for(var i=0; i<data.students.length; i++) {
       this.students.push(new Student(data.students[i].id, data.students[i].first_name, data.students[i].last_name));
     }

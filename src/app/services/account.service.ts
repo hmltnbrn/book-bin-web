@@ -5,7 +5,9 @@ import { environment } from '@environments/environment';
 @Injectable()
 export class AccountService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   Register(user) {
     return this.http.post(environment.api + '/auth/SignUp', user);

@@ -6,7 +6,9 @@ import { MultipleResponseModel } from '@models/multiple-response.model';
 @Injectable()
 export class StudentService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   GetAllTeacherStudents(returnAll?: string, page?: string, pageSize?: string, search?: string) {
     let params = new HttpParams();

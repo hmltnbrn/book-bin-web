@@ -19,7 +19,11 @@ export class ForgotPasswordComponent implements OnInit {
 
   apiError: string;
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService) { }
+  constructor(
+    private router: Router,
+    private accountService: AccountService,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit() {
     this.emailForm = new FormGroup({

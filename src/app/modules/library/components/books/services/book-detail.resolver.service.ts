@@ -7,7 +7,10 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class BookDetailResolver implements Resolve<any> {
-  constructor(private bookService: BookService, private router: Router) { }
+  constructor(
+    private bookService: BookService,
+    private router: Router
+  ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     let id = +route.paramMap.get('id');

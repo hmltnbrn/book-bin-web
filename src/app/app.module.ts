@@ -11,6 +11,7 @@ import { SharedModule } from './modules/shared/shared.module';
 
 import { AccountService } from './services/account.service';
 import { StorageService } from './services/storage.service';
+import { AuthenticationService } from './services/authentication.service';
 
 import { AuthGuard } from './services/guards/auth.guard.service';
 import { NoAuthGuard } from './services/guards/noauth.guard.service';
@@ -63,6 +64,7 @@ import { InternalErrorComponent } from './components/internal-error/internal-err
   providers: [
     AccountService,
     StorageService,
+    AuthenticationService,
     AuthGuard,
     NoAuthGuard,
     CanDeactivateGuard,

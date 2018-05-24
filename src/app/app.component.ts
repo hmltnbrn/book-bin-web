@@ -1,18 +1,22 @@
 import { Component, HostListener } from '@angular/core';
 import { Router, ActivatedRoute, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
-import { StorageService } from './services/storage.service';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [StorageService]
+  providers: [AuthenticationService]
 })
 export class AppComponent {
 
   isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthenticationService
+  ) {
     this.router.events.subscribe(event => {
       this.navigationInterceptor(event);
     });
@@ -20,10 +24,8 @@ export class AppComponent {
 
   @HostListener('window:beforeunload', [ '$event' ])
   beforeUnloadHander(event) {
-    if(this.storageService.getItem('staySignedIn') == 'false') {
-      this.storageService.removeItem('token');
-      this.storageService.removeItem('username');
-      this.storageService.removeItem('staySignedIn');
+    if (!this.authService.getStaySignedIn()) {
+      this.authService.signOff();
     }
   }
 

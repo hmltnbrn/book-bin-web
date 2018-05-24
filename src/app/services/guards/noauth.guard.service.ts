@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, CanLoad, Router, ActivatedRouteSnapshot, RouterStateSnapshot, Route } from '@angular/router';
-import { StorageService } from '../storage.service';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Injectable()
 export class NoAuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
-  constructor(private storageService: StorageService, private router: Router) { }
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url: string = state.url;
-
     return this.checkNotLogin(url);
   }
 
@@ -19,13 +21,11 @@ export class NoAuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   canLoad(route: Route): boolean {
     let url = `/${route.path}`;
-
     return this.checkNotLogin(url);
   }
 
   checkNotLogin(url: string): boolean {
-    let auth: any = this.storageService.getItem("token");
-    if (auth) {
+    if (this.authService.isAuthenticated()) {
       this.router.navigate(['/']);
       return false;
     }

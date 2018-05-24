@@ -9,7 +9,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddEntityComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, public dialogRef: MatDialogRef<AddEntityComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialogRef: MatDialogRef<AddEntityComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   ngOnInit() {
   }

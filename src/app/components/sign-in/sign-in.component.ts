@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AccountService } from '@services/account.service';
-import { StorageService } from '@services/storage.service';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
-  providers: [AccountService, StorageService]
+  providers: [AccountService, AuthenticationService]
 })
 export class SignInComponent implements OnInit {
 
@@ -18,7 +18,12 @@ export class SignInComponent implements OnInit {
 
   apiError: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private accountService: AccountService, private storageService: StorageService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private accountService: AccountService,
+    private authService: AuthenticationService
+  ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -52,10 +57,7 @@ export class SignInComponent implements OnInit {
   }
 
   onSuccess(data) {
-    this.storageService.setItem('id', data['id']);
-    this.storageService.setItem('username', this.signInForm.value.username);
-    this.storageService.setItem('token', data['token']);
-    this.storageService.setItem('staySignedIn', this.signInForm.value.staySignedIn);
+    this.authService.setUserAuthentication(data['id'], this.signInForm.value.username, data['token'], this.signInForm.value.staySignedIn);
     this.router.navigate(['/library/dashboard']);
   }
 

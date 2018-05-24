@@ -20,7 +20,11 @@ export class ChangePasswordComponent implements OnInit {
   apiError: string;
   hide: boolean = true;
 
-  constructor(private route: ActivatedRoute, private router: Router, private accountService: AccountService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private accountService: AccountService
+  ) { }
 
   ngOnInit() {
     this.createForm();

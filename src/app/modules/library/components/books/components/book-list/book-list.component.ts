@@ -26,7 +26,13 @@ export class BookListComponent implements OnInit {
 
   selectLevel: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService, private dialog: MatDialog, private alphabet: Alphabet) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private bookService: BookService,
+    private dialog: MatDialog,
+    private alphabet: Alphabet
+  ) { }
 
   ngOnInit() {
     this.route.data

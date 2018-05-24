@@ -23,7 +23,13 @@ export class SignUpComponent implements OnInit {
   signedUp: boolean = false;
   isLoading: boolean = false;
 
-  constructor(private router: Router, private accountService: AccountService, private storageService: StorageService, private titles: Titles, private grades: Grades) { }
+  constructor(
+    private router: Router,
+    private accountService: AccountService,
+    private storageService: StorageService,
+    private titles: Titles,
+    private grades: Grades
+  ) { }
 
   ngOnInit() {
     this.signUpForm = new FormGroup({

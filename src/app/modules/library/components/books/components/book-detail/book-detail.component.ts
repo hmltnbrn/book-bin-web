@@ -38,7 +38,12 @@ export class BookDetailComponent implements OnInit {
   formError: string;
   isLoading = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService, private dialog: MatDialog) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private bookService: BookService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.route.data

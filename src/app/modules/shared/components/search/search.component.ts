@@ -13,7 +13,10 @@ export class SearchComponent implements OnInit {
 
   search: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

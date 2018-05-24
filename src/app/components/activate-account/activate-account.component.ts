@@ -8,7 +8,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ActivateAccountComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.data

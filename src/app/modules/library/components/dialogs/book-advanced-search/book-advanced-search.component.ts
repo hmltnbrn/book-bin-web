@@ -8,7 +8,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class BookAdvancedSearchComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<BookAdvancedSearchComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    public dialogRef: MatDialogRef<BookAdvancedSearchComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   ngOnInit() {
   }

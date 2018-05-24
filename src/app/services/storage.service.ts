@@ -6,14 +6,11 @@ export class StorageService {
   constructor() { }
 
   getItem(key: any) {
-    return localStorage.getItem(key);
+    return JSON.parse(localStorage.getItem(key));
   }
 
   setItem(key: any, value: any) {
-    if(typeof value == 'object') {
-      localStorage.setItem(key, JSON.stringify(value));
-    }
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
   removeItem(key: any) {

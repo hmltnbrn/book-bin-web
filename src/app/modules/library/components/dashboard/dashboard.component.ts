@@ -23,7 +23,10 @@ export class DashboardComponent implements OnInit {
   topReadersColumns = ['name', 'books_read'];
   overdueBooksColumns = ['name', 'title', 'due_date'];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.data

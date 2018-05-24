@@ -34,7 +34,11 @@ export class StudentCheckInComponent {
 
   apiError: string;
 
-  constructor(public dialogRef: MatDialogRef<StudentCheckInComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private bookService: BookService) {
+  constructor(
+    public dialogRef: MatDialogRef<StudentCheckInComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private bookService: BookService
+  ) {
     this.bookId = data.bookId;
   }
 

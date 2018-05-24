@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { StorageService } from '../storage.service';
+import { AuthenticationService } from '@services/authentication.service';
 import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router, private storageService: StorageService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthenticationService
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let auth: any;
-    const authData = this.storageService.getItem("token");
+    const authData = this.authService.getToken();
     if (authData) {
       auth = authData;
     }

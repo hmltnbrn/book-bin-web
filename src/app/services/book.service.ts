@@ -7,7 +7,9 @@ import 'rxjs/add/operator/delay';
 @Injectable()
 export class BookService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   GetAllBooks(page?: string, pageSize?: string, search?: string) {
     let params = new HttpParams();
