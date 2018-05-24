@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { MultipleResponseModel } from '@models/multiple-response.model';
-import 'rxjs/add/operator/delay';
+import { delay } from 'rxjs/operators'
 
 @Injectable()
 export class BookService {
@@ -41,15 +41,15 @@ export class BookService {
   }
 
   AddBook(book) {
-    return this.http.put(environment.api + '/api/Books/TeacherBooks', book).delay(1000);
+    return this.http.put(environment.api + '/api/Books/TeacherBooks', book).pipe(delay(1000));
   }
 
   EditBook(book) {
-    return this.http.patch(environment.api + '/api/Books/TeacherBooks', book).delay(1000);
+    return this.http.patch(environment.api + '/api/Books/TeacherBooks', book).pipe(delay(1000));
   }
 
   DeleteBook(id: number) {
-    return this.http.delete(environment.api + '/api/Books/TeacherBooks/' + id).delay(1000);
+    return this.http.delete(environment.api + '/api/Books/TeacherBooks/' + id).pipe(delay(1000));
   }
 
   GetStudentsWithBook(bookId) {
@@ -62,17 +62,17 @@ export class BookService {
 
   CheckOutBook(bookId: number, studentId: number, dueDate: number) {
     let body = { book_id: bookId, student_id: studentId, date_due: dueDate };
-    return this.http.post(environment.api + '/api/Books/CheckOut', body).delay(1000);
+    return this.http.post(environment.api + '/api/Books/CheckOut', body).pipe(delay(1000));
   }
 
   CheckInBook(bookId: number, studentId: number) {
     let body = { book_id: bookId, student_id: studentId };
-    return this.http.post(environment.api + '/api/Books/CheckIn', body).delay(1000);
+    return this.http.post(environment.api + '/api/Books/CheckIn', body).pipe(delay(1000));
   }
 
   CheckInBookForSudents(id, students) {
     let body = { book_id: id, students: students };
-    return this.http.post(environment.api + '/api/Books/CheckIn/Students', body).delay(1000);
+    return this.http.post(environment.api + '/api/Books/CheckIn/Students', body).pipe(delay(1000));
   }
 
   GetDashboard() {

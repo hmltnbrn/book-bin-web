@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { BookService } from '@services/book.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class DashboardResolver implements Resolve<any> {
@@ -13,8 +12,10 @@ export class DashboardResolver implements Resolve<any> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    return this.bookService.GetDashboard().catch(err => {
-      return Observable.of(err.error);
-    });
+    return this.bookService.GetDashboard().pipe(
+      catchError(err => {
+        return of(err.error);
+      })
+    );
   }
 }

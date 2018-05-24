@@ -3,9 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BookService } from '@services/book.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ClassValidator } from '@validators/class.validator';
-import { Observable } from 'rxjs/Observable';
-import { startWith } from 'rxjs/operators/startWith';
-import { map } from 'rxjs/operators/map';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 export class Student {
   name: string;
